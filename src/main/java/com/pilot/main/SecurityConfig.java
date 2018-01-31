@@ -10,17 +10,15 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Override
-    protected void configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity
-        			.authorizeRequests().antMatchers("*/**").permitAll()
-        			.and().httpBasic();
-    }
-    
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-            auth.inMemoryAuthentication().withUser("user").password("password");
-    }
+	 @Override
+     protected void configure(HttpSecurity http) throws Exception {
+             http.authorizeRequests().antMatchers("/**").hasRole("USER").and().httpBasic();
+     }
+
+     @Override
+     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+             auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+     }
     
    
 
