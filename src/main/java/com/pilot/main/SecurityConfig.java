@@ -12,12 +12,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeRequests().antMatchers("/","/fuelController/*","/fuelController/customerPricing/").permitAll()
-                .anyRequest().authenticated();
-                
-
-       httpSecurity.csrf().disable();
-       httpSecurity.headers().frameOptions().disable();
+                .authorizeRequests()
+                	.antMatchers("*/fuelController/*","*/fuelController/customerPricing/").permitAll()
+        			.and().httpBasic();
     }
     
     @Autowired
