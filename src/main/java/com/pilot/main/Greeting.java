@@ -1,4 +1,4 @@
-package com.pilot.dao;
+package com.pilot.main;
 
 public class Greeting {
 

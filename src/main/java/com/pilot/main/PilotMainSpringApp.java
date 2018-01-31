@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.pilot.*")
+
 public class PilotMainSpringApp {
 	
 	private static final Logger logger = LoggerFactory.getLogger(PilotMainSpringApp.class);

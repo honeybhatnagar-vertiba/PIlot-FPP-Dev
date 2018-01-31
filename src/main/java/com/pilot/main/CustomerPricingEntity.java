@@ -1,4 +1,4 @@
-package com.pilot.dao;
+package com.pilot.main;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

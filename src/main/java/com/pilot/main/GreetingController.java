@@ -1,11 +1,9 @@
-package com.pilot.controller;
+package com.pilot.main;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.pilot.dao.Greeting;
 
 @RestController
 public class GreetingController {
