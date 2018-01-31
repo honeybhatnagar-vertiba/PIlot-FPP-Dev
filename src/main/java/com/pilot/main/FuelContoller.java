@@ -19,7 +19,9 @@ public class FuelContoller {
 	public List<CustomerPricingEntity> getAllNotes() {
 	    return (List<CustomerPricingEntity>) customerPricingRepository.findAll();
 	}
-
+	
+	
+	
 }
 
 
