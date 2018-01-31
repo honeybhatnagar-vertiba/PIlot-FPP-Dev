@@ -11,7 +11,7 @@ import com.pilot.dao.CustomerPricingEntity;
 import com.pilot.dao.CustomerPricingRepository;
 
 @RestController
-@RequestMapping("/fuelController")
+@RequestMapping("*/fuelController")
 public class FuelContoller {
 	
 	@Autowired
