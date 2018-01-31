@@ -1,4 +1,4 @@
-package com.example.pilotpoc;
+package com.pilot.dao;
 
 import org.springframework.data.repository.CrudRepository;
 
