@@ -2,6 +2,7 @@ package com.pilot.main;
 
 public class Greeting {
 
+	/* id */
     private final long id;
     private final String content;
 
