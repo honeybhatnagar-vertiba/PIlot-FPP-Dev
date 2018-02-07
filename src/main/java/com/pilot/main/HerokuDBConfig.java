@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "herokuEntityManagerFactory",
-    transactionManagerRef = "herokuTransactionManager", basePackages = {"com.pilot.main.herokurepo.repo"})
+    transactionManagerRef = "herokuTransactionManager", basePackages = {"com.pilot.main.herokurepo.repo.*"})
 public class  HerokuDBConfig{
 
   @Bean(name = "herokuDataSource")
