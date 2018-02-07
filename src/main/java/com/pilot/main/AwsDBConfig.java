@@ -23,13 +23,14 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     basePackages = {"com.pilot.main.awsrepo.repo"})
 public class AwsDBConfig {
 
-
+  @Primary
   @Bean(name = "dataSource")
   @ConfigurationProperties(prefix = "spring.datasource")
   public DataSource dataSource() {
     return DataSourceBuilder.create().build();
   }
 
+  @Primary
   @Bean(name = "entityManagerFactory")
   public LocalContainerEntityManagerFactoryBean entityManagerFactory(
       EntityManagerFactoryBuilder builder, @Qualifier("dataSource") DataSource dataSource) {
@@ -40,6 +41,7 @@ public class AwsDBConfig {
         .build();
   }
 
+  @Primary
   @Bean(name = "transactionManager")
   public PlatformTransactionManager transactionManager(
       @Qualifier("entityManagerFactory") EntityManagerFactory entityManagerFactory) {
