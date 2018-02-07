@@ -14,13 +14,13 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
+/*
 @Configuration
 @EnableTransactionManagement
 @EnableJpaRepositories(entityManagerFactoryRef = "herokuEntityManagerFactory",
-    transactionManagerRef = "herokuTransactionManager", basePackages = {"com.pilot.main.herokurepo.repo"})
+    transactionManagerRef = "herokuTransactionManager", basePackages = {"com.pilot.main.herokurepo.repo"})*/
 public class  HerokuDBConfig{
-
+/*
   @Bean(name = "herokuDataSource")
   @ConfigurationProperties(prefix = "postgres.datasource")
   public DataSource dataSource() {
@@ -38,6 +38,6 @@ public class  HerokuDBConfig{
   public PlatformTransactionManager herokuTransactionManager(
       @Qualifier("herokuEntityManagerFactory") EntityManagerFactory herokuEntityManagerFactory) {
     return new JpaTransactionManager(herokuEntityManagerFactory);
-  }
+  }*/
 
 }

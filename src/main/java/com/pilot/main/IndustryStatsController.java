@@ -14,12 +14,12 @@ import com.pilot.main.herokurepo.domain.PilotFuelIndustryStatsEntity;
 import com.pilot.main.herokurepo.repo.PilotFuelIndustryStatsRepo;
 
 
-@RestController
+/*@RestController
 @CrossOrigin
-@RequestMapping("/industryStats")
+@RequestMapping("/industryStats")*/
 public class IndustryStatsController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(IndustryStatsController.class);
+	/*private static final Logger logger = LoggerFactory.getLogger(IndustryStatsController.class);
 	
 	@Autowired
 	PilotFuelIndustryStatsRepo pilotFuelIndustryStatsRepo;
@@ -29,7 +29,7 @@ public class IndustryStatsController {
 	public List<PilotFuelIndustryStatsEntity> getAllNotes() {
 		logger.info("---in Fuel Controller ---");
 	    return (List<PilotFuelIndustryStatsEntity>) pilotFuelIndustryStatsRepo.findAll();
-	}
+	}*/
 	
 	
 	
