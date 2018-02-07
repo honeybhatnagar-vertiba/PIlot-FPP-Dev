@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "pilot_fuel_industry_stats")
+@Table(name = "pilotsch.pilot_fuel_industry_stats")
 public class PilotFuelIndustryStatsEntity implements Serializable{
 
 	/**
