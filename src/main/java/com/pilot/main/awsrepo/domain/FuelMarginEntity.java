@@ -1,4 +1,4 @@
-package com.pilot.main;
+package com.pilot.main.awsrepo.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

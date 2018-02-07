@@ -10,29 +10,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pilot.main.awsrepo.domain.CustomerPricingEntity;
-import com.pilot.main.awsrepo.repo.CustomerPricingRepository;
+import com.pilot.main.herokurepo.domain.PilotFuelIndustryStatsEntity;
+import com.pilot.main.herokurepo.repo.PilotFuelIndustryStatsRepo;
+
 
 @RestController
 @CrossOrigin
-@RequestMapping("/fuelController")
-public class FuelContoller {
+@RequestMapping("/industryStats")
+public class IndustryStatsController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FuelContoller.class);
+	private static final Logger logger = LoggerFactory.getLogger(IndustryStatsController.class);
 	
 	@Autowired
-	CustomerPricingRepository customerPricingRepository;
+	PilotFuelIndustryStatsRepo pilotFuelIndustryStatsRepo;
 	
 	// Get All Notes
-	@GetMapping(path = "/customerPricing")
-	public List<CustomerPricingEntity> getAllNotes() {
+	@GetMapping(path = "/details")
+	public List<PilotFuelIndustryStatsEntity> getAllNotes() {
 		logger.info("---in Fuel Controller ---");
-	    return (List<CustomerPricingEntity>) customerPricingRepository.findAll();
+	    return (List<PilotFuelIndustryStatsEntity>) pilotFuelIndustryStatsRepo.findAll();
 	}
 	
 	
 	
 }
-
-
-    
