@@ -1,12 +1,11 @@
 package com.pilot.main.herokurepo.repo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
 import com.pilot.main.herokurepo.domain.PilotFuelIndustryStatsEntity;
 
-@Repository
-public interface  PilotFuelIndustryStatsRepo extends JpaRepository<PilotFuelIndustryStatsEntity, Long> {
+
+public interface  PilotFuelIndustryStatsRepo extends CrudRepository<PilotFuelIndustryStatsEntity, Long> {
 
 }
 
