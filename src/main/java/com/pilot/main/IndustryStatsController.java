@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.pilot.main.herokurepo.domain.PfjFuelStatementEntity;
 import com.pilot.main.herokurepo.domain.PilotFuelIndustryStatsEntity;
+import com.pilot.main.herokurepo.repo.PfjFuelStatementRepo;
 import com.pilot.main.herokurepo.repo.PilotFuelIndustryStatsRepo;
 
 
@@ -24,6 +26,9 @@ public class IndustryStatsController {
 	@Autowired
 	PilotFuelIndustryStatsRepo pilotFuelIndustryStatsRepo;
 	
+	@Autowired
+	PfjFuelStatementRepo pfjFuelStatementRepo;
+	
 	// Get All Notes
 	@GetMapping(path = "/details")
 	public List<PilotFuelIndustryStatsEntity> getAllNotes() {
@@ -31,6 +36,13 @@ public class IndustryStatsController {
 	    return (List<PilotFuelIndustryStatsEntity>) pilotFuelIndustryStatsRepo.findAll();
 	}
 	
+	
+	// Get All Notes
+		@GetMapping(path = "/fuelStatement")
+		public List<PfjFuelStatementEntity> getFuleStatement() {
+			logger.info("---in Fuel Controller ---");
+		    return (List<PfjFuelStatementEntity>) pfjFuelStatementRepo.findAll();
+		}
 	
 	
 }

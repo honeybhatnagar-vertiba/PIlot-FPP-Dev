@@ -30,7 +30,9 @@ public class  HerokuDBConfig{
   @Bean(name = "herokuEntityManagerFactory")
   public LocalContainerEntityManagerFactoryBean herokuEntityManagerFactory(
       EntityManagerFactoryBuilder builder, @Qualifier("herokuDataSource") DataSource dataSource) {
-    return builder.dataSource(dataSource).packages("com.pilot.main.herokurepo.domain").persistenceUnit("pilot_fuel_industry_stats")
+    return builder.dataSource(dataSource).packages("com.pilot.main.herokurepo.domain")
+    		.persistenceUnit("pilot_fuel_industry_stats")
+    		.persistenceUnit("pfj_fuel_statement")
         .build();
   }
 
