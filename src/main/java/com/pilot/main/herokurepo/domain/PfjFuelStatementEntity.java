@@ -62,7 +62,7 @@ public class PfjFuelStatementEntity implements Serializable{
 
 	@Override
 	public String toString() {
-		return "PfjFuelStatementEntity [id=" + id + ", industry=" + industry + ", percent1=" + percent1 + ", amount1="
+		return "PfjFuelStatementEntity [id=" + id + ", category=" + category + ", percent1=" + percent1 + ", amount1="
 				+ amount1 + ", percent2=" + percent2 + ", amount2=" + amount2 + ", percent_gallons=" + percent_gallons
 				+ ", amount_gallons=" + amount_gallons + ", percent_gallons1=" + percent_gallons1 + ", amount_gallons1="
 				+ amount_gallons1 + ", actual=" + actual + ", target=" + target + ", vs_ly=" + vs_ly + "]";
@@ -76,12 +76,13 @@ public class PfjFuelStatementEntity implements Serializable{
 		this.id = id;
 	}
 
-	public String getIndustry() {
-		return industry;
+	
+	public String getCategory() {
+		return category;
 	}
 
-	public void setIndustry(String industry) {
-		this.industry = industry;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	public String getPercent1() {
