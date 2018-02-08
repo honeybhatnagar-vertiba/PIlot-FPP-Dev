@@ -23,8 +23,8 @@ public class PfjFuelStatementEntity implements Serializable{
 	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "industry")
-	private String industry ;
+	@Column(name = "category")
+	private String category ;
 	
 	
 	@Column(name = "percent1")
