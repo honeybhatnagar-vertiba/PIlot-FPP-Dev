@@ -6,7 +6,7 @@ import { User } from "app/models/user";
 @Injectable()
 export class UserService  {
 
-   constructor(private http: Http) {
+   constructor(private http: Http) { 
    }
 
    getUsers(): Observable<User[]> {
