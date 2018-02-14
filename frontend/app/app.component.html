@@ -31,7 +31,7 @@
                 <td valign="center">
                     <div class="demo-switch-wrapper" >
                      <label class="switch">
-                          <input type="checkbox" checked="">
+                          <input type="checkbox" id="ytd_mtd_toggle"  (change)="toggleYTDandMTD()">
                           <span class="slider round"></span>
                         </label>
                     </div>
@@ -231,7 +231,7 @@
                 <div class="demo-radio-row">
 				  <div class="mdc-form-field"> 
 					<div class="mdc-radio" data-demo-no-js="">
-					  <input class="mdc-radio__native-control" type="radio" id="ex1-default-radio1" checked="" name="ex1-default" (click)="loadtableau('https://public.tableau.com/views/USregionalheatmap/Sheet2?:embed=y')">
+					  <input class="mdc-radio__native-control" type="radio" id="ex1-default-radio1" checked="" name="ex1-default" (click)="loadtableau('https://public.tableau.com/views/USMap_21/USMap?:embed=y')">
 					  <div class="mdc-radio__background">
 						<div class="mdc-radio__outer-circle"></div>
 						<div class="mdc-radio__inner-circle"></div>
