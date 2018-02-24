@@ -26,8 +26,7 @@ import {AppRoutingModule} from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    MatTabsModule
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
