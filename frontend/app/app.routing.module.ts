@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PfjoverViewComponent } from './Components/pfjover-view/pfjover-view.component';
 import { RetailPricingComponent } from './Components/retail-pricing/retail-pricing.component';
-import { executeViewHooks } from '@angular/core/src/render3/instructions';
 import { ExecutiveReportingComponent } from './Components/executive-reporting/executive-reporting.component';
 import { CustomerPricingComponent } from './Components/customer-pricing/customer-pricing.component';
 
