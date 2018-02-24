@@ -13,8 +13,6 @@ import { CustomerPricingComponent } from './Components/customer-pricing/customer
 
 import {AppRoutingModule} from './app-routing.module';
 
-import { MatTabsModule } from '@angular/material/tabs';
-
 @NgModule({
   declarations: [
     AppComponent,
