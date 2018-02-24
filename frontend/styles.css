@@ -229,3 +229,44 @@ body {
     color: rgba(255, 255, 255, 1.0);
     padding-left: 10px;
 }
+
+.searchBarMenu {
+  width: 185px;
+    /* float: right; */
+    height: 30px;
+    background: #24242C;
+    border-radius: 10px;
+    margin-top: 0.8%;
+    color: #fff;
+    position: absolute;
+    right: 20%;
+    
+}
+.searchBarMenu img
+{
+  margin: 9px;
+}
+
+.searchBarMenu input
+{
+  background: transparent;
+  border: 0;
+  /* float: left; */
+  position: absolute;
+  top: 17%;
+  outline: none;
+  width: 142px;
+}
+.loginavatar
+{
+    position: absolute;
+    right: 8%;
+    color: #fff;
+}
+
+.loginavatar img
+{
+  width: 58px;
+  height: 47px;
+}
+

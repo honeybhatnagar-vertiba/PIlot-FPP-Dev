@@ -1,19 +1,36 @@
-
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img src='assets/pfjLogo.jpg'></a>
-      </div>
-      <ul class="nav navbar-nav navbar-center">
-          <li><a routerLink="/pfjover-view" skipLocationChange >PFJ OVERVIEW</a></li>
-          <li><a routerLink="/retail-pricing" skipLocationChange>RETAIL PRICING</a></li>
-          <li><a routerLink="/executive-reporting" skipLocationChange>EXECUTIVE REPORTING</a></li>
-          <li><a routerLink="/customer-pricing" skipLocationChange>CUSTOMER PRICING</a></li>
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
+<nav class="navbar navbar-inverse" style="width: 1348px">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        <img src='assets/pfjLogo.jpg'>
+      </a>
     </div>
-  </nav>
+    <ul class="nav navbar-nav navbar-center">
+      <li>
+        <a routerLink="/pfjover-view" skipLocationChange>PFJ OVERVIEW</a>
+      </li>
+      <li>
+        <a routerLink="/retail-pricing" skipLocationChange>RETAIL PRICING</a>
+      </li>
+      <li>
+        <a routerLink="/executive-reporting" skipLocationChange>EXECUTIVE REPORTING</a>
+      </li>
+      <li>
+        <a routerLink="/customer-pricing" skipLocationChange>CUSTOMER PRICING</a>
+      </li>
+
+    </ul>
+    <div class="searchBarMenu">
+      <img src="./assets/searchicon.png">
+      <input type="text" placeholder="Search..">
+    </div>
+    <div class="loginavatar">
+      <img src="./assets/loginavatar.png">
+      <span style="float:right;margin-top:15px;">Logged in User</span>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+      </ul>
+  </div>
+</nav>
