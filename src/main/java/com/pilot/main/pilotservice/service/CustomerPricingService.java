@@ -1,6 +1,7 @@
 package com.pilot.main.pilotservice.service;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -148,10 +149,10 @@ public class CustomerPricingService {
 		Volume volume = new Volume();
 		volume.setVsTgLeft(pfjTotalEntity.getActualVolume().subtract(pfjTotalEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(pfjTotalEntity.getActualVolume().subtract(pfjTotalEntity.getTargetVolume()).divide(pfjTotalEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsTgRight(pfjTotalEntity.getActualVolume().subtract(pfjTotalEntity.getTargetVolume()).divide(pfjTotalEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		volume.setVsLyLeft(pfjTotalEntity.getActualVolume().subtract(pfjTotalEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(pfjTotalEntity.getActualVolume().subtract(pfjTotalEntity.getActualVolumeLy()).divide(pfjTotalEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(pfjTotalEntity.getActualVolume().subtract(pfjTotalEntity.getActualVolumeLy()).divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
 		margin.setVsTgLeft(pfjTotalEntity.getActualNetPlMargin().subtract(pfjTotalEntity.getTargetNetPlMargin()));
@@ -183,10 +184,10 @@ public class CustomerPricingService {
 		Volume volume = new Volume();
 		volume.setVsTgLeft(betterOfEntity.getActualVolume().subtract(betterOfEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(betterOfEntity.getActualVolume().subtract(betterOfEntity.getTargetVolume()).divide(betterOfEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsTgRight(betterOfEntity.getActualVolume().subtract(betterOfEntity.getTargetVolume()).divide(betterOfEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		volume.setVsLyLeft(betterOfEntity.getActualVolume().subtract(betterOfEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(betterOfEntity.getActualVolume().subtract(betterOfEntity.getActualVolumeLy()).divide(betterOfEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(betterOfEntity.getActualVolume().subtract(betterOfEntity.getActualVolumeLy()).divide(betterOfEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
 		margin.setVsTgLeft(betterOfEntity.getActualNetPlMargin().subtract(betterOfEntity.getTargetNetPlMargin()));
@@ -197,11 +198,11 @@ public class CustomerPricingService {
 		margin.setVsLyRight(betterOfEntity.getActualNetPlMarginLy());
 		
 		MixPercentage mixPercentage = new MixPercentage();
-		mixPercentage.setMixActual(betterOfEntity.getActualVolume().divide(betterOfEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixTarget(betterOfEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixVsLy((betterOfEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume()))
-									.subtract(betterOfEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
-									.divide(betterOfEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
+		mixPercentage.setMixActual(betterOfEntity.getActualVolume().divide(betterOfEntity.getActualVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(betterOfEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((betterOfEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume(), 6, RoundingMode.HALF_UP))
+									.subtract(betterOfEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP))
+									.divide(betterOfEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP), 6, RoundingMode.HALF_UP)
 									.multiply(BigDecimal.valueOf(100)));
 		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
 		
@@ -228,10 +229,10 @@ public class CustomerPricingService {
 		Volume volume = new Volume();
 		volume.setVsTgLeft(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getTargetVolume()).divide(totalRetailEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsTgRight(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getTargetVolume()).divide(totalRetailEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		volume.setVsLyLeft(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getActualVolumeLy()).divide(totalRetailEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getActualVolumeLy()).divide(totalRetailEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
 		margin.setVsTgLeft(totalRetailEntity.getActualNetPlMargin().subtract(totalRetailEntity.getTargetNetPlMargin()));
@@ -242,11 +243,11 @@ public class CustomerPricingService {
 		margin.setVsLyRight(totalRetailEntity.getActualNetPlMarginLy());
 		
 		MixPercentage mixPercentage = new MixPercentage();
-		mixPercentage.setMixActual(totalRetailEntity.getActualVolume().divide(totalRetailEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixTarget(totalRetailEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixVsLy((totalRetailEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume()))
-									.subtract(totalRetailEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
-									.divide(totalRetailEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
+		mixPercentage.setMixActual(totalRetailEntity.getActualVolume().divide(totalRetailEntity.getActualVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(totalRetailEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((totalRetailEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume(), 6, RoundingMode.HALF_UP))
+									.subtract(totalRetailEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP))
+									.divide(totalRetailEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP), 6, RoundingMode.HALF_UP)
 									.multiply(BigDecimal.valueOf(100)));
 		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
 		
@@ -269,10 +270,10 @@ public class CustomerPricingService {
 		Volume volume = new Volume();
 		volume.setVsTgLeft(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getTargetVolume()).divide(retailMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsTgRight(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getTargetVolume()).divide(retailMinusEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		volume.setVsLyLeft(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getActualVolumeLy()).divide(retailMinusEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getActualVolumeLy()).divide(retailMinusEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
 		margin.setVsTgLeft(retailMinusEntity.getActualNetPlMargin().subtract(retailMinusEntity.getTargetNetPlMargin()));
@@ -283,11 +284,11 @@ public class CustomerPricingService {
 		margin.setVsLyRight(retailMinusEntity.getActualNetPlMarginLy());
 		
 		MixPercentage mixPercentage = new MixPercentage();
-		mixPercentage.setMixActual(retailMinusEntity.getActualVolume().divide(retailMinusEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixTarget(retailMinusEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixVsLy((retailMinusEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume()))
-									.subtract(retailMinusEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
-									.divide(retailMinusEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
+		mixPercentage.setMixActual(retailMinusEntity.getActualVolume().divide(retailMinusEntity.getActualVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(retailMinusEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((retailMinusEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume(), 6, RoundingMode.HALF_UP))
+									.subtract(retailMinusEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP))
+									.divide(retailMinusEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP), 6, RoundingMode.HALF_UP)
 									.multiply(BigDecimal.valueOf(100)));
 		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
 		
@@ -313,10 +314,10 @@ public class CustomerPricingService {
 		Volume volume = new Volume();
 		volume.setVsTgLeft(fundedEntity.getActualVolume().subtract(fundedEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(fundedEntity.getActualVolume().subtract(fundedEntity.getTargetVolume()).divide(fundedEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsTgRight(fundedEntity.getActualVolume().subtract(fundedEntity.getTargetVolume()).divide(fundedEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		volume.setVsLyLeft(fundedEntity.getActualVolume().subtract(fundedEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(fundedEntity.getActualVolume().subtract(fundedEntity.getActualVolumeLy()).divide(fundedEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(fundedEntity.getActualVolume().subtract(fundedEntity.getActualVolumeLy()).divide(fundedEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
 		margin.setVsTgLeft(fundedEntity.getActualNetPlMargin().subtract(fundedEntity.getTargetNetPlMargin()));
@@ -327,11 +328,11 @@ public class CustomerPricingService {
 		margin.setVsLyRight(fundedEntity.getActualNetPlMarginLy());
 		
 		MixPercentage mixPercentage = new MixPercentage();
-		mixPercentage.setMixActual(fundedEntity.getActualVolume().divide(fundedEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixTarget(fundedEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixVsLy((fundedEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume()))
-									.subtract(fundedEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
-									.divide(fundedEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
+		mixPercentage.setMixActual(fundedEntity.getActualVolume().divide(fundedEntity.getActualVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(fundedEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((fundedEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume(), 6, RoundingMode.HALF_UP))
+									.subtract(fundedEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP))
+									.divide(fundedEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP), 6, RoundingMode.HALF_UP)
 									.multiply(BigDecimal.valueOf(100)));
 		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
 		
@@ -354,10 +355,10 @@ public class CustomerPricingService {
 		Volume volume = new Volume();
 		volume.setVsTgLeft(cccEntity.getActualVolume().subtract(cccEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(cccEntity.getActualVolume().subtract(cccEntity.getTargetVolume()).divide(cccEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsTgRight(cccEntity.getActualVolume().subtract(cccEntity.getTargetVolume()).divide(cccEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		volume.setVsLyLeft(cccEntity.getActualVolume().subtract(cccEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(cccEntity.getActualVolume().subtract(cccEntity.getActualVolumeLy()).divide(cccEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(cccEntity.getActualVolume().subtract(cccEntity.getActualVolumeLy()).divide(cccEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
 		margin.setVsTgLeft(cccEntity.getActualNetPlMargin().subtract(cccEntity.getTargetNetPlMargin()));
@@ -368,11 +369,11 @@ public class CustomerPricingService {
 		margin.setVsLyRight(cccEntity.getActualNetPlMarginLy());
 		
 		MixPercentage mixPercentage = new MixPercentage();
-		mixPercentage.setMixActual(cccEntity.getActualVolume().divide(cccEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixTarget(cccEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixVsLy((cccEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume()))
-									.subtract(cccEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
-									.divide(cccEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy()))
+		mixPercentage.setMixActual(cccEntity.getActualVolume().divide(cccEntity.getActualVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(cccEntity.getTargetVolume().divide(pfjTotalEntity.getTargetVolume(), 6, RoundingMode.HALF_UP).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((cccEntity.getActualVolume().divide(pfjTotalEntity.getActualVolume(), 6, RoundingMode.HALF_UP))
+									.subtract(cccEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP))
+									.divide(cccEntity.getActualVolumeLy().divide(pfjTotalEntity.getActualVolumeLy(), 6, RoundingMode.HALF_UP), 6, RoundingMode.HALF_UP)
 									.multiply(BigDecimal.valueOf(100)));
 		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
 		
