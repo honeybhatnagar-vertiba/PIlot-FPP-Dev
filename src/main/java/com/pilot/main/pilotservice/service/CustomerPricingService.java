@@ -13,11 +13,15 @@ import com.pilot.main.pilotrepo.entity.FctDmCompanyLevelActualVsTargetEntity;
 import com.pilot.main.pilotrepo.entity.QFctDmCompanyLevelActualVsTargetEntity;
 import com.pilot.main.pilotrepo.repo.FctDmCompanyLevelActualVsTargetRepo;
 import com.pilot.main.pilotservice.pojo.BetterOf;
+import com.pilot.main.pilotservice.pojo.CCC;
 import com.pilot.main.pilotservice.pojo.CustomerPricingDetail;
+import com.pilot.main.pilotservice.pojo.Funded;
 import com.pilot.main.pilotservice.pojo.GrossProfitDollars;
 import com.pilot.main.pilotservice.pojo.Margin;
 import com.pilot.main.pilotservice.pojo.MixPercentage;
 import com.pilot.main.pilotservice.pojo.PFJTotal;
+import com.pilot.main.pilotservice.pojo.RetailMinus;
+import com.pilot.main.pilotservice.pojo.TotalRetail;
 import com.pilot.main.pilotservice.pojo.Volume;
 
 public class CustomerPricingService {
@@ -204,24 +208,171 @@ public class CustomerPricingService {
 		betterOf.setEffPumpFeeTarget(betterOfEntity.getTargetEffectivePumpFee());
 	}
 
-	private void populateTotalRetail(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity customerPricingEntity) {
-		// TODO Auto-generated method stub
+	private void populateTotalRetail(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity totalRetailEntity) {
+		GrossProfitDollars grossProfitDollars = new GrossProfitDollars();
+		grossProfitDollars.setVsTgLeft(totalRetailEntity.getActualGrossProfit().subtract(totalRetailEntity.getTargetGrossProfit()));
+		grossProfitDollars.setVsTgLeftPositive(grossProfitDollars.getVsTgLeft().signum() > 0);
+		grossProfitDollars.setVsTgRight(totalRetailEntity.getTargetGrossProfit());
+		grossProfitDollars.setVsLyLeft(totalRetailEntity.getActualGrossProfit().subtract(totalRetailEntity.getActualGrossProfitLy()));
+		grossProfitDollars.setVsLyLeftPositive(grossProfitDollars.getVsLyLeft().signum() > 0);
+		grossProfitDollars.setVsLyRight(totalRetailEntity.getActualGrossProfitLy());
 		
+		Volume volume = new Volume();
+		volume.setVsTgLeft(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getTargetVolume()));
+		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
+		volume.setVsTgRight(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getTargetVolume()).divide(totalRetailEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyLeft(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getActualVolumeLy()));
+		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
+		volume.setVsLyRight(totalRetailEntity.getActualVolume().subtract(totalRetailEntity.getActualVolumeLy()).divide(totalRetailEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		
+		Margin margin = new Margin();
+		margin.setVsTgLeft(totalRetailEntity.getActualNetPlMargin().subtract(totalRetailEntity.getTargetNetPlMargin()));
+		margin.setVsTgLeftPositive(margin.getVsTgLeft().signum() > 0);
+		margin.setVsTgRight(totalRetailEntity.getTargetNetPlMargin());
+		margin.setVsLyLeft(totalRetailEntity.getActualNetPlMargin().subtract(totalRetailEntity.getActualNetPlMarginLy()));
+		margin.setVsLyLeftPositive(margin.getVsLyLeft().signum() > 0);
+		margin.setVsLyRight(totalRetailEntity.getActualNetPlMarginLy());
+		
+		MixPercentage mixPercentage = new MixPercentage();
+		mixPercentage.setMixActual(totalRetailEntity.getActualVolume().divide(totalRetailEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(totalRetailEntity.getTargetVolume().divide(totalRetailEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((totalRetailEntity.getActualVolume().divide(totalRetailEntity.getActualVolume()))
+									.subtract(totalRetailEntity.getActualVolumeLy().divide(totalRetailEntity.getActualVolumeLy()))
+									.divide(totalRetailEntity.getActualVolumeLy().divide(totalRetailEntity.getActualVolumeLy()))
+									.multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
+		
+		TotalRetail totalRetail = new TotalRetail();
+		totalRetail.setGrossProfitDollars(grossProfitDollars);
+		totalRetail.setVolume(volume);
+		totalRetail.setMargin(margin);
+		totalRetail.setMixPercentage(mixPercentage);
 	}
 
-	private void populateRetailMinus(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity customerPricingEntity) {
-		// TODO Auto-generated method stub
+	private void populateRetailMinus(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity reatilMinusEntity) {
+		GrossProfitDollars grossProfitDollars = new GrossProfitDollars();
+		grossProfitDollars.setVsTgLeft(reatilMinusEntity.getActualGrossProfit().subtract(reatilMinusEntity.getTargetGrossProfit()));
+		grossProfitDollars.setVsTgLeftPositive(grossProfitDollars.getVsTgLeft().signum() > 0);
+		grossProfitDollars.setVsTgRight(reatilMinusEntity.getTargetGrossProfit());
+		grossProfitDollars.setVsLyLeft(reatilMinusEntity.getActualGrossProfit().subtract(reatilMinusEntity.getActualGrossProfitLy()));
+		grossProfitDollars.setVsLyLeftPositive(grossProfitDollars.getVsLyLeft().signum() > 0);
+		grossProfitDollars.setVsLyRight(reatilMinusEntity.getActualGrossProfitLy());
 		
+		Volume volume = new Volume();
+		volume.setVsTgLeft(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getTargetVolume()));
+		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
+		volume.setVsTgRight(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getTargetVolume()).divide(reatilMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyLeft(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getActualVolumeLy()));
+		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
+		volume.setVsLyRight(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getActualVolumeLy()).divide(reatilMinusEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		
+		Margin margin = new Margin();
+		margin.setVsTgLeft(reatilMinusEntity.getActualNetPlMargin().subtract(reatilMinusEntity.getTargetNetPlMargin()));
+		margin.setVsTgLeftPositive(margin.getVsTgLeft().signum() > 0);
+		margin.setVsTgRight(reatilMinusEntity.getTargetNetPlMargin());
+		margin.setVsLyLeft(reatilMinusEntity.getActualNetPlMargin().subtract(reatilMinusEntity.getActualNetPlMarginLy()));
+		margin.setVsLyLeftPositive(margin.getVsLyLeft().signum() > 0);
+		margin.setVsLyRight(reatilMinusEntity.getActualNetPlMarginLy());
+		
+		MixPercentage mixPercentage = new MixPercentage();
+		mixPercentage.setMixActual(reatilMinusEntity.getActualVolume().divide(reatilMinusEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(reatilMinusEntity.getTargetVolume().divide(reatilMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((reatilMinusEntity.getActualVolume().divide(reatilMinusEntity.getActualVolume()))
+									.subtract(reatilMinusEntity.getActualVolumeLy().divide(reatilMinusEntity.getActualVolumeLy()))
+									.divide(reatilMinusEntity.getActualVolumeLy().divide(reatilMinusEntity.getActualVolumeLy()))
+									.multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
+		
+		RetailMinus retailMinus = new RetailMinus();
+		retailMinus.setGrossProfitDollars(grossProfitDollars);
+		retailMinus.setVolume(volume);
+		retailMinus.setMargin(margin);
+		retailMinus.setMixPercentage(mixPercentage);
+		//TODO Populate data from table
+		retailMinus.setRmDiscountActual(BigDecimal.valueOf(0));
+		retailMinus.setRmDiscountTarget(BigDecimal.valueOf(0));
 	}
 
-	private void populateFunded(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity customerPricingEntity) {
-		// TODO Auto-generated method stub
+	private void populateFunded(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity fundedEntity) {
+		GrossProfitDollars grossProfitDollars = new GrossProfitDollars();
+		grossProfitDollars.setVsTgLeft(fundedEntity.getActualGrossProfit().subtract(fundedEntity.getTargetGrossProfit()));
+		grossProfitDollars.setVsTgLeftPositive(grossProfitDollars.getVsTgLeft().signum() > 0);
+		grossProfitDollars.setVsTgRight(fundedEntity.getTargetGrossProfit());
+		grossProfitDollars.setVsLyLeft(fundedEntity.getActualGrossProfit().subtract(fundedEntity.getActualGrossProfitLy()));
+		grossProfitDollars.setVsLyLeftPositive(grossProfitDollars.getVsLyLeft().signum() > 0);
+		grossProfitDollars.setVsLyRight(fundedEntity.getActualGrossProfitLy());
 		
+		Volume volume = new Volume();
+		volume.setVsTgLeft(fundedEntity.getActualVolume().subtract(fundedEntity.getTargetVolume()));
+		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
+		volume.setVsTgRight(fundedEntity.getActualVolume().subtract(fundedEntity.getTargetVolume()).divide(fundedEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyLeft(fundedEntity.getActualVolume().subtract(fundedEntity.getActualVolumeLy()));
+		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
+		volume.setVsLyRight(fundedEntity.getActualVolume().subtract(fundedEntity.getActualVolumeLy()).divide(fundedEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		
+		Margin margin = new Margin();
+		margin.setVsTgLeft(fundedEntity.getActualNetPlMargin().subtract(fundedEntity.getTargetNetPlMargin()));
+		margin.setVsTgLeftPositive(margin.getVsTgLeft().signum() > 0);
+		margin.setVsTgRight(fundedEntity.getTargetNetPlMargin());
+		margin.setVsLyLeft(fundedEntity.getActualNetPlMargin().subtract(fundedEntity.getActualNetPlMarginLy()));
+		margin.setVsLyLeftPositive(margin.getVsLyLeft().signum() > 0);
+		margin.setVsLyRight(fundedEntity.getActualNetPlMarginLy());
+		
+		MixPercentage mixPercentage = new MixPercentage();
+		mixPercentage.setMixActual(fundedEntity.getActualVolume().divide(fundedEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(fundedEntity.getTargetVolume().divide(fundedEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((fundedEntity.getActualVolume().divide(fundedEntity.getActualVolume()))
+									.subtract(fundedEntity.getActualVolumeLy().divide(fundedEntity.getActualVolumeLy()))
+									.divide(fundedEntity.getActualVolumeLy().divide(fundedEntity.getActualVolumeLy()))
+									.multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
+		
+		Funded funded = new Funded();
+		funded.setGrossProfitDollars(grossProfitDollars);
+		funded.setVolume(volume);
+		funded.setMargin(margin);
+		funded.setMixPercentage(mixPercentage);
 	}
 
-	private void populateCCC(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity customerPricingEntity) {
-		// TODO Auto-generated method stub
+	private void populateCCC(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity cccEntity) {
+		GrossProfitDollars grossProfitDollars = new GrossProfitDollars();
+		grossProfitDollars.setVsTgLeft(cccEntity.getActualGrossProfit().subtract(cccEntity.getTargetGrossProfit()));
+		grossProfitDollars.setVsTgLeftPositive(grossProfitDollars.getVsTgLeft().signum() > 0);
+		grossProfitDollars.setVsTgRight(cccEntity.getTargetGrossProfit());
+		grossProfitDollars.setVsLyLeft(cccEntity.getActualGrossProfit().subtract(cccEntity.getActualGrossProfitLy()));
+		grossProfitDollars.setVsLyLeftPositive(grossProfitDollars.getVsLyLeft().signum() > 0);
+		grossProfitDollars.setVsLyRight(cccEntity.getActualGrossProfitLy());
 		
+		Volume volume = new Volume();
+		volume.setVsTgLeft(cccEntity.getActualVolume().subtract(cccEntity.getTargetVolume()));
+		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
+		volume.setVsTgRight(cccEntity.getActualVolume().subtract(cccEntity.getTargetVolume()).divide(cccEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyLeft(cccEntity.getActualVolume().subtract(cccEntity.getActualVolumeLy()));
+		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
+		volume.setVsLyRight(cccEntity.getActualVolume().subtract(cccEntity.getActualVolumeLy()).divide(cccEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		
+		Margin margin = new Margin();
+		margin.setVsTgLeft(cccEntity.getActualNetPlMargin().subtract(cccEntity.getTargetNetPlMargin()));
+		margin.setVsTgLeftPositive(margin.getVsTgLeft().signum() > 0);
+		margin.setVsTgRight(cccEntity.getTargetNetPlMargin());
+		margin.setVsLyLeft(cccEntity.getActualNetPlMargin().subtract(cccEntity.getActualNetPlMarginLy()));
+		margin.setVsLyLeftPositive(margin.getVsLyLeft().signum() > 0);
+		margin.setVsLyRight(cccEntity.getActualNetPlMarginLy());
+		
+		MixPercentage mixPercentage = new MixPercentage();
+		mixPercentage.setMixActual(cccEntity.getActualVolume().divide(cccEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(cccEntity.getTargetVolume().divide(cccEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((cccEntity.getActualVolume().divide(cccEntity.getActualVolume()))
+									.subtract(cccEntity.getActualVolumeLy().divide(cccEntity.getActualVolumeLy()))
+									.divide(cccEntity.getActualVolumeLy().divide(cccEntity.getActualVolumeLy()))
+									.multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
+		
+		CCC ccc = new CCC();
+		ccc.setGrossProfitDollars(grossProfitDollars);
+		ccc.setVolume(volume);
+		ccc.setMargin(margin);
+		ccc.setMixPercentage(mixPercentage);
 	}
 
 	private List<FctDmCompanyLevelActualVsTargetEntity> findEntitiesByTemporalPeriod(String temporalPeriod) {

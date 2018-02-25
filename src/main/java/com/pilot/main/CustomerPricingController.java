@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.pilot.main.pilotrepo.entity.FctDmCompanyLevelActualVsTargetEntity;
-import com.pilot.main.pilotrepo.repo.FctDmCompanyLevelActualVsTargetRepo;
+import com.pilot.main.pilotservice.pojo.CustomerPricingDetail;
+import com.pilot.main.pilotservice.service.CustomerPricingService;
 
 @RestController
 @CrossOrigin
@@ -21,12 +21,12 @@ public class CustomerPricingController {
 	private static final Logger logger = LoggerFactory.getLogger(CustomerPricingController.class);
 
 	@Autowired
-	FctDmCompanyLevelActualVsTargetRepo fctDmCompanyLevelActualVsTargetRepo;
+	CustomerPricingService customerPricingService;
 
 	// Get All Notes
 	@GetMapping(path = "/getprices")
-	public List<FctDmCompanyLevelActualVsTargetEntity> getAllNotes() {
+	public List<CustomerPricingDetail> getAllNotes() {
 		logger.info("---in Customer Pricing Controller ---");
-		return (List<FctDmCompanyLevelActualVsTargetEntity>) fctDmCompanyLevelActualVsTargetRepo.findAll();
+		return customerPricingService.fetchCustomerPricingDetails();
 	}
 }
