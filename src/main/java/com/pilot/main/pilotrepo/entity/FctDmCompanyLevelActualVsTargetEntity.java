@@ -20,9 +20,11 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 	@Column(name = "DIM_LINE_OF_BUSINESS_GROUP_ID")
 	private Long dimLineOfBusinessGroupId;
 
+	@Id
 	@Column(name = "MIX_OF_BUSINESS")
 	private String mixOfBusiness;
 
+	@Id
 	@Column(name = "TEMPORAL_PERIOD")
 	private String temporalPeriod;
 
