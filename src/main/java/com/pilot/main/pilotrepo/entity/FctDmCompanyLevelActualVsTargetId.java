@@ -11,7 +11,7 @@ public class FctDmCompanyLevelActualVsTargetId implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5757063939829678731L;
 
 	@Column(name = "DIM_LINE_OF_BUSINESS_GROUP_ID")
 	private Long dimLineOfBusinessGroupId;
