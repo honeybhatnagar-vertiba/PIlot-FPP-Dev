@@ -7,6 +7,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.pilot.main.pilotrepo.entity.FctDmCompanyLevelActualVsTargetEntity;
@@ -24,6 +25,7 @@ import com.pilot.main.pilotservice.pojo.RetailMinus;
 import com.pilot.main.pilotservice.pojo.TotalRetail;
 import com.pilot.main.pilotservice.pojo.Volume;
 
+@Service
 public class CustomerPricingService {
 
 	private static final Logger logger = LoggerFactory.getLogger(CustomerPricingService.class);
@@ -31,12 +33,6 @@ public class CustomerPricingService {
 	@Autowired
 	FctDmCompanyLevelActualVsTargetRepo fctDmCompanyLevelActualVsTargetRepo;
 
-	/**
-	 * Get details for Customer Pricing screen
-	 * 
-	 * @return
-	 */
-	@GetMapping(path = "/getprices")
 	public List<CustomerPricingDetail> fetchCustomerPricingDetails() {
 		logger.info("---in Customer Pricing Service ---");
 

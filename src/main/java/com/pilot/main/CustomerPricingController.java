@@ -23,7 +23,11 @@ public class CustomerPricingController {
 	@Autowired
 	CustomerPricingService customerPricingService;
 
-	// Get All Notes
+	/**
+	 * Get details for Customer Pricing screen
+	 * 
+	 * @return
+	 */
 	@GetMapping(path = "/getprices")
 	public List<CustomerPricingDetail> getAllNotes() {
 		logger.info("---in Customer Pricing Controller ---");
