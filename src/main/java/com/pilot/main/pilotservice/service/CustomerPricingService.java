@@ -40,18 +40,21 @@ public class CustomerPricingService {
 		 * UI data generation for MTD filter
 		 */
 		List<FctDmCompanyLevelActualVsTargetEntity> mtdEntities = findEntitiesByTemporalPeriod("MTD");
+		logger.info("Found MTD type rows ---> " + mtdEntities.size());
 		CustomerPricingDetail customerPricingDetailMTD = populateCustomerPricingDetail(mtdEntities);
 
 		/*
 		 * UI data generation for LCM filter
 		 */
 		List<FctDmCompanyLevelActualVsTargetEntity> lcmEntities = findEntitiesByTemporalPeriod("LCM");
+		logger.info("Found LCM type rows ---> " + lcmEntities.size());
 		CustomerPricingDetail customerPricingDetailLCM = populateCustomerPricingDetail(lcmEntities);
 
 		/*
 		 * UI data generation for LCYTD filter
 		 */
 		List<FctDmCompanyLevelActualVsTargetEntity> lcytdEntities = findEntitiesByTemporalPeriod("LCYTD");
+		logger.info("Found LCYTD type rows ---> " + lcytdEntities.size());
 		CustomerPricingDetail customerPricingDetailLCYTD = populateCustomerPricingDetail(lcytdEntities);
 
 		List<CustomerPricingDetail> customerPricingDetails = new ArrayList<CustomerPricingDetail>();
@@ -71,7 +74,7 @@ public class CustomerPricingService {
 		FctDmCompanyLevelActualVsTargetEntity pfjTotalEntity = null;
 		FctDmCompanyLevelActualVsTargetEntity betterOfEntity = null;
 		FctDmCompanyLevelActualVsTargetEntity totalRetailEntity = null;
-		FctDmCompanyLevelActualVsTargetEntity reatilMinusEntity = null;
+		FctDmCompanyLevelActualVsTargetEntity retailMinusEntity = null;
 		FctDmCompanyLevelActualVsTargetEntity fundedEntity = null;
 		FctDmCompanyLevelActualVsTargetEntity cccEntity = null;
 		
@@ -79,16 +82,22 @@ public class CustomerPricingService {
 			
 			if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("TOTAL")) {
 				pfjTotalEntity = fctDmCompanyLevelActualVsTargetEntity;
+				logger.info("Found TOTAL type entity ---> " + pfjTotalEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("BETTER OF")) {
 				betterOfEntity = fctDmCompanyLevelActualVsTargetEntity;
+				logger.info("Found BETTER OF type entity ---> " + betterOfEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("TOTAL RETAIL")) {
 				totalRetailEntity = fctDmCompanyLevelActualVsTargetEntity;
+				logger.info("Found TOTAL RETAIL type entity ---> " + totalRetailEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("RETAIL MINUS")) {
-				reatilMinusEntity = fctDmCompanyLevelActualVsTargetEntity;
+				retailMinusEntity = fctDmCompanyLevelActualVsTargetEntity;
+				logger.info("Found RETAIL MINUS type entity ---> " + retailMinusEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("FUNDED")) {
 				fundedEntity = fctDmCompanyLevelActualVsTargetEntity;
+				logger.info("Found FUNDED type entity ---> " + fundedEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("CCC")) {
 				cccEntity = fctDmCompanyLevelActualVsTargetEntity;
+				logger.info("Found CCC type entity ---> " + cccEntity.toString());
 			}
 			
 			/*
@@ -109,7 +118,7 @@ public class CustomerPricingService {
 			/*
 			 * Populate RetailMinus
 			 */
-			populateRetailMinus(customerPricingDetail, reatilMinusEntity);
+			populateRetailMinus(customerPricingDetail, retailMinusEntity);
 			
 			/*
 			 * Populate Funded
@@ -245,37 +254,37 @@ public class CustomerPricingService {
 		totalRetail.setMixPercentage(mixPercentage);
 	}
 
-	private void populateRetailMinus(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity reatilMinusEntity) {
+	private void populateRetailMinus(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity retailMinusEntity) {
 		GrossProfitDollars grossProfitDollars = new GrossProfitDollars();
-		grossProfitDollars.setVsTgLeft(reatilMinusEntity.getActualGrossProfit().subtract(reatilMinusEntity.getTargetGrossProfit()));
+		grossProfitDollars.setVsTgLeft(retailMinusEntity.getActualGrossProfit().subtract(retailMinusEntity.getTargetGrossProfit()));
 		grossProfitDollars.setVsTgLeftPositive(grossProfitDollars.getVsTgLeft().signum() > 0);
-		grossProfitDollars.setVsTgRight(reatilMinusEntity.getTargetGrossProfit());
-		grossProfitDollars.setVsLyLeft(reatilMinusEntity.getActualGrossProfit().subtract(reatilMinusEntity.getActualGrossProfitLy()));
+		grossProfitDollars.setVsTgRight(retailMinusEntity.getTargetGrossProfit());
+		grossProfitDollars.setVsLyLeft(retailMinusEntity.getActualGrossProfit().subtract(retailMinusEntity.getActualGrossProfitLy()));
 		grossProfitDollars.setVsLyLeftPositive(grossProfitDollars.getVsLyLeft().signum() > 0);
-		grossProfitDollars.setVsLyRight(reatilMinusEntity.getActualGrossProfitLy());
+		grossProfitDollars.setVsLyRight(retailMinusEntity.getActualGrossProfitLy());
 		
 		Volume volume = new Volume();
-		volume.setVsTgLeft(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getTargetVolume()));
+		volume.setVsTgLeft(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getTargetVolume()));
 		volume.setVsTgLeftPositive(volume.getVsTgLeft().signum() > 0);
-		volume.setVsTgRight(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getTargetVolume()).divide(reatilMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		volume.setVsLyLeft(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getActualVolumeLy()));
+		volume.setVsTgRight(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getTargetVolume()).divide(retailMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyLeft(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getActualVolumeLy()));
 		volume.setVsLyLeftPositive(volume.getVsLyLeft().signum() > 0);
-		volume.setVsLyRight(reatilMinusEntity.getActualVolume().subtract(reatilMinusEntity.getActualVolumeLy()).divide(reatilMinusEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
+		volume.setVsLyRight(retailMinusEntity.getActualVolume().subtract(retailMinusEntity.getActualVolumeLy()).divide(retailMinusEntity.getActualVolumeLy()).multiply(BigDecimal.valueOf(100)));
 		
 		Margin margin = new Margin();
-		margin.setVsTgLeft(reatilMinusEntity.getActualNetPlMargin().subtract(reatilMinusEntity.getTargetNetPlMargin()));
+		margin.setVsTgLeft(retailMinusEntity.getActualNetPlMargin().subtract(retailMinusEntity.getTargetNetPlMargin()));
 		margin.setVsTgLeftPositive(margin.getVsTgLeft().signum() > 0);
-		margin.setVsTgRight(reatilMinusEntity.getTargetNetPlMargin());
-		margin.setVsLyLeft(reatilMinusEntity.getActualNetPlMargin().subtract(reatilMinusEntity.getActualNetPlMarginLy()));
+		margin.setVsTgRight(retailMinusEntity.getTargetNetPlMargin());
+		margin.setVsLyLeft(retailMinusEntity.getActualNetPlMargin().subtract(retailMinusEntity.getActualNetPlMarginLy()));
 		margin.setVsLyLeftPositive(margin.getVsLyLeft().signum() > 0);
-		margin.setVsLyRight(reatilMinusEntity.getActualNetPlMarginLy());
+		margin.setVsLyRight(retailMinusEntity.getActualNetPlMarginLy());
 		
 		MixPercentage mixPercentage = new MixPercentage();
-		mixPercentage.setMixActual(reatilMinusEntity.getActualVolume().divide(reatilMinusEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixTarget(reatilMinusEntity.getTargetVolume().divide(reatilMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
-		mixPercentage.setMixVsLy((reatilMinusEntity.getActualVolume().divide(reatilMinusEntity.getActualVolume()))
-									.subtract(reatilMinusEntity.getActualVolumeLy().divide(reatilMinusEntity.getActualVolumeLy()))
-									.divide(reatilMinusEntity.getActualVolumeLy().divide(reatilMinusEntity.getActualVolumeLy()))
+		mixPercentage.setMixActual(retailMinusEntity.getActualVolume().divide(retailMinusEntity.getActualVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixTarget(retailMinusEntity.getTargetVolume().divide(retailMinusEntity.getTargetVolume()).multiply(BigDecimal.valueOf(100)));
+		mixPercentage.setMixVsLy((retailMinusEntity.getActualVolume().divide(retailMinusEntity.getActualVolume()))
+									.subtract(retailMinusEntity.getActualVolumeLy().divide(retailMinusEntity.getActualVolumeLy()))
+									.divide(retailMinusEntity.getActualVolumeLy().divide(retailMinusEntity.getActualVolumeLy()))
 									.multiply(BigDecimal.valueOf(100)));
 		mixPercentage.setMixVsLyPositive(mixPercentage.getMixVsLy().signum() > 0);
 		
