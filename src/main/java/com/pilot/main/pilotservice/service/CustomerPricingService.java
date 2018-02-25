@@ -80,24 +80,26 @@ public class CustomerPricingService {
 		
 		for (FctDmCompanyLevelActualVsTargetEntity fctDmCompanyLevelActualVsTargetEntity : fctDmCompanyLevelActualVsTargetEntities) {
 			
+			logger.info("Iterating entity ---> " + fctDmCompanyLevelActualVsTargetEntity.toString());
+			
 			if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("TOTAL")) {
 				pfjTotalEntity = fctDmCompanyLevelActualVsTargetEntity;
-				logger.info("Found TOTAL type entity ---> " + pfjTotalEntity.toString());
+				// logger.info("Found TOTAL type entity ---> " + pfjTotalEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("BETTER OF")) {
 				betterOfEntity = fctDmCompanyLevelActualVsTargetEntity;
-				logger.info("Found BETTER OF type entity ---> " + betterOfEntity.toString());
+				// logger.info("Found BETTER OF type entity ---> " + betterOfEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("TOTAL RETAIL")) {
 				totalRetailEntity = fctDmCompanyLevelActualVsTargetEntity;
-				logger.info("Found TOTAL RETAIL type entity ---> " + totalRetailEntity.toString());
+				// logger.info("Found TOTAL RETAIL type entity ---> " + totalRetailEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("RETAIL MINUS")) {
 				retailMinusEntity = fctDmCompanyLevelActualVsTargetEntity;
-				logger.info("Found RETAIL MINUS type entity ---> " + retailMinusEntity.toString());
+				// logger.info("Found RETAIL MINUS type entity ---> " + retailMinusEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("FUNDED")) {
 				fundedEntity = fctDmCompanyLevelActualVsTargetEntity;
-				logger.info("Found FUNDED type entity ---> " + fundedEntity.toString());
+				// logger.info("Found FUNDED type entity ---> " + fundedEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("CCC")) {
 				cccEntity = fctDmCompanyLevelActualVsTargetEntity;
-				logger.info("Found CCC type entity ---> " + cccEntity.toString());
+				// logger.info("Found CCC type entity ---> " + cccEntity.toString());
 			}
 		}
 		
