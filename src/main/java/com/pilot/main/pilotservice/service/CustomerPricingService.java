@@ -82,22 +82,22 @@ public class CustomerPricingService {
 			
 			logger.info("Iterating entity ---> " + fctDmCompanyLevelActualVsTargetEntity.toString());
 			
-			if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("TOTAL")) {
+			if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("TOTAL")) {
 				pfjTotalEntity = fctDmCompanyLevelActualVsTargetEntity;
 				// logger.info("Found TOTAL type entity ---> " + pfjTotalEntity.toString());
-			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("BETTER OF")) {
+			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("BETTER OF")) {
 				betterOfEntity = fctDmCompanyLevelActualVsTargetEntity;
 				// logger.info("Found BETTER OF type entity ---> " + betterOfEntity.toString());
-			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("TOTAL RETAIL")) {
+			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("TOTAL RETAIL")) {
 				totalRetailEntity = fctDmCompanyLevelActualVsTargetEntity;
 				// logger.info("Found TOTAL RETAIL type entity ---> " + totalRetailEntity.toString());
-			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("RETAIL MINUS")) {
+			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("RETAIL MINUS")) {
 				retailMinusEntity = fctDmCompanyLevelActualVsTargetEntity;
 				// logger.info("Found RETAIL MINUS type entity ---> " + retailMinusEntity.toString());
-			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("FUNDED")) {
+			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("FUNDED")) {
 				fundedEntity = fctDmCompanyLevelActualVsTargetEntity;
 				// logger.info("Found FUNDED type entity ---> " + fundedEntity.toString());
-			} else if (fctDmCompanyLevelActualVsTargetEntity.getMixOfBusiness().equalsIgnoreCase("CCC")) {
+			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("CCC")) {
 				cccEntity = fctDmCompanyLevelActualVsTargetEntity;
 				// logger.info("Found CCC type entity ---> " + cccEntity.toString());
 			}

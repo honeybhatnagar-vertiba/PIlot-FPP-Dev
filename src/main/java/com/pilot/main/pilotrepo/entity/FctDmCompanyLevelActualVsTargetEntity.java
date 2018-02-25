@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
@@ -16,17 +16,9 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@Id
-	@Column(name = "DIM_LINE_OF_BUSINESS_GROUP_ID")
-	private Long dimLineOfBusinessGroupId;
-
-	@Id
-	@Column(name = "MIX_OF_BUSINESS")
-	private String mixOfBusiness;
-
-	@Id
-	@Column(name = "TEMPORAL_PERIOD")
-	private String temporalPeriod;
+	
+	@EmbeddedId
+	FctDmCompanyLevelActualVsTargetId fctDmCompanyLevelActualVsTargetId;
 
 	@Column(name = "DIM_CURRENCY_ID")
 	private Long dimCurrencyId;
@@ -73,28 +65,12 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 	@Column(name = "TARGET_NET_PL_MARGIN")
 	private BigDecimal targetNetPlMargin;
 
-	public Long getDimLineOfBusinessGroupId() {
-		return dimLineOfBusinessGroupId;
+	public FctDmCompanyLevelActualVsTargetId getFctDmCompanyLevelActualVsTargetId() {
+		return fctDmCompanyLevelActualVsTargetId;
 	}
 
-	public void setDimLineOfBusinessGroupId(Long dimLineOfBusinessGroupId) {
-		this.dimLineOfBusinessGroupId = dimLineOfBusinessGroupId;
-	}
-
-	public String getMixOfBusiness() {
-		return mixOfBusiness;
-	}
-
-	public void setMixOfBusiness(String mixOfBusiness) {
-		this.mixOfBusiness = mixOfBusiness;
-	}
-
-	public String getTemporalPeriod() {
-		return temporalPeriod;
-	}
-
-	public void setTemporalPeriod(String temporalPeriod) {
-		this.temporalPeriod = temporalPeriod;
+	public void setFctDmCompanyLevelActualVsTargetId(FctDmCompanyLevelActualVsTargetId fctDmCompanyLevelActualVsTargetId) {
+		this.fctDmCompanyLevelActualVsTargetId = fctDmCompanyLevelActualVsTargetId;
 	}
 
 	public Long getDimCurrencyId() {
@@ -219,15 +195,14 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 
 	@Override
 	public String toString() {
-		return "FctDmCompanyLevelActualVsTargetEntity [dimLineOfBusinessGroupId=" + dimLineOfBusinessGroupId
-				+ ", mixOfBusiness=" + mixOfBusiness + ", temporalPeriod=" + temporalPeriod + ", dimCurrencyId="
-				+ dimCurrencyId + ", dimQuantityConversionId=" + dimQuantityConversionId + ", actualGrossProfit="
-				+ actualGrossProfit + ", actualGrossProfitLy=" + actualGrossProfitLy + ", targetGrossProfit="
-				+ targetGrossProfit + ", actualVolume=" + actualVolume + ", actualVolumeLy=" + actualVolumeLy
-				+ ", targetVolume=" + targetVolume + ", actualBuyingPerformance=" + actualBuyingPerformance
-				+ ", targetBuyingPerformance=" + targetBuyingPerformance + ", actualEffectivePumpFee="
-				+ actualEffectivePumpFee + ", targetEffectivePumpFee=" + targetEffectivePumpFee + ", actualNetPlMargin="
-				+ actualNetPlMargin + ", actualNetPlMarginLy=" + actualNetPlMarginLy + ", targetNetPlMargin="
-				+ targetNetPlMargin + "]";
+		return "FctDmCompanyLevelActualVsTargetEntity [fctDmCompanyLevelActualVsTargetId="
+				+ fctDmCompanyLevelActualVsTargetId + ", dimCurrencyId=" + dimCurrencyId + ", dimQuantityConversionId="
+				+ dimQuantityConversionId + ", actualGrossProfit=" + actualGrossProfit + ", actualGrossProfitLy="
+				+ actualGrossProfitLy + ", targetGrossProfit=" + targetGrossProfit + ", actualVolume=" + actualVolume
+				+ ", actualVolumeLy=" + actualVolumeLy + ", targetVolume=" + targetVolume + ", actualBuyingPerformance="
+				+ actualBuyingPerformance + ", targetBuyingPerformance=" + targetBuyingPerformance
+				+ ", actualEffectivePumpFee=" + actualEffectivePumpFee + ", targetEffectivePumpFee="
+				+ targetEffectivePumpFee + ", actualNetPlMargin=" + actualNetPlMargin + ", actualNetPlMarginLy="
+				+ actualNetPlMarginLy + ", targetNetPlMargin=" + targetNetPlMargin + "]";
 	}
 }
