@@ -43,6 +43,7 @@ public class CustomerPricingService {
 		List<FctDmCompanyLevelActualVsTargetEntity> mtdEntities = findEntitiesByTemporalPeriod("MTD");
 		logger.info("Found MTD type rows ---> " + mtdEntities.size());
 		CustomerPricingDetail customerPricingDetailMTD = populateCustomerPricingDetail(mtdEntities);
+		customerPricingDetailMTD.setTemporalPeriod("MTD");
 
 		/*
 		 * UI data generation for LCM filter
@@ -50,6 +51,7 @@ public class CustomerPricingService {
 		List<FctDmCompanyLevelActualVsTargetEntity> lcmEntities = findEntitiesByTemporalPeriod("LCM");
 		logger.info("Found LCM type rows ---> " + lcmEntities.size());
 		CustomerPricingDetail customerPricingDetailLCM = populateCustomerPricingDetail(lcmEntities);
+		customerPricingDetailLCM.setTemporalPeriod("LCM");
 
 		/*
 		 * UI data generation for LCYTD filter
@@ -57,6 +59,7 @@ public class CustomerPricingService {
 		List<FctDmCompanyLevelActualVsTargetEntity> lcytdEntities = findEntitiesByTemporalPeriod("LCYTD");
 		logger.info("Found LCYTD type rows ---> " + lcytdEntities.size());
 		CustomerPricingDetail customerPricingDetailLCYTD = populateCustomerPricingDetail(lcytdEntities);
+		customerPricingDetailLCYTD.setTemporalPeriod("LCYTD");
 
 		List<CustomerPricingDetail> customerPricingDetails = new ArrayList<CustomerPricingDetail>();
 		customerPricingDetails.add(customerPricingDetailMTD);
@@ -81,26 +84,18 @@ public class CustomerPricingService {
 		
 		for (FctDmCompanyLevelActualVsTargetEntity fctDmCompanyLevelActualVsTargetEntity : fctDmCompanyLevelActualVsTargetEntities) {
 			
-			logger.info("Iterating entity ---> " + fctDmCompanyLevelActualVsTargetEntity.toString());
-			
 			if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("TOTAL")) {
 				pfjTotalEntity = fctDmCompanyLevelActualVsTargetEntity;
-				// logger.info("Found TOTAL type entity ---> " + pfjTotalEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("BETTER OF")) {
 				betterOfEntity = fctDmCompanyLevelActualVsTargetEntity;
-				// logger.info("Found BETTER OF type entity ---> " + betterOfEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("TOTAL RETAIL")) {
 				totalRetailEntity = fctDmCompanyLevelActualVsTargetEntity;
-				// logger.info("Found TOTAL RETAIL type entity ---> " + totalRetailEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("RETAIL MINUS")) {
 				retailMinusEntity = fctDmCompanyLevelActualVsTargetEntity;
-				// logger.info("Found RETAIL MINUS type entity ---> " + retailMinusEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("FUNDED")) {
 				fundedEntity = fctDmCompanyLevelActualVsTargetEntity;
-				// logger.info("Found FUNDED type entity ---> " + fundedEntity.toString());
 			} else if (fctDmCompanyLevelActualVsTargetEntity.getFctDmCompanyLevelActualVsTargetId().getMixOfBusiness().equalsIgnoreCase("CCC")) {
 				cccEntity = fctDmCompanyLevelActualVsTargetEntity;
-				// logger.info("Found CCC type entity ---> " + cccEntity.toString());
 			}
 		}
 		
@@ -215,6 +210,8 @@ public class CustomerPricingService {
 		betterOf.setBuyingPerfTarget(betterOfEntity.getTargetBuyingPerformance());
 		betterOf.setEffPumpFeeActual(betterOfEntity.getActualEffectivePumpFee());
 		betterOf.setEffPumpFeeTarget(betterOfEntity.getTargetEffectivePumpFee());
+		
+		customerPricingDetail.setBetterOf(betterOf);
 	}
 
 	private void populateTotalRetail(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity totalRetailEntity, FctDmCompanyLevelActualVsTargetEntity pfjTotalEntity) {
@@ -256,6 +253,8 @@ public class CustomerPricingService {
 		totalRetail.setVolume(volume);
 		totalRetail.setMargin(margin);
 		totalRetail.setMixPercentage(mixPercentage);
+		
+		customerPricingDetail.setTotalRetail(totalRetail);
 	}
 
 	private void populateRetailMinus(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity retailMinusEntity, FctDmCompanyLevelActualVsTargetEntity pfjTotalEntity) {
@@ -300,6 +299,8 @@ public class CustomerPricingService {
 		//TODO Populate data from table
 		retailMinus.setRmDiscountActual(BigDecimal.valueOf(0));
 		retailMinus.setRmDiscountTarget(BigDecimal.valueOf(0));
+		
+		customerPricingDetail.setRetailMinus(retailMinus);
 	}
 
 	private void populateFunded(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity fundedEntity, FctDmCompanyLevelActualVsTargetEntity pfjTotalEntity) {
@@ -341,6 +342,8 @@ public class CustomerPricingService {
 		funded.setVolume(volume);
 		funded.setMargin(margin);
 		funded.setMixPercentage(mixPercentage);
+		
+		customerPricingDetail.setFunded(funded);
 	}
 
 	private void populateCCC(CustomerPricingDetail customerPricingDetail, FctDmCompanyLevelActualVsTargetEntity cccEntity, FctDmCompanyLevelActualVsTargetEntity pfjTotalEntity) {
@@ -382,6 +385,8 @@ public class CustomerPricingService {
 		ccc.setVolume(volume);
 		ccc.setMargin(margin);
 		ccc.setMixPercentage(mixPercentage);
+		
+		customerPricingDetail.setCcc(ccc);
 	}
 
 	private List<FctDmCompanyLevelActualVsTargetEntity> findEntitiesByTemporalPeriod(String temporalPeriod) {
