@@ -36,7 +36,7 @@
 
 
 .imageLogo {
-    background-image: url('./assets/pfjLogo.jpg'); 
+    background-image: url('./assets/images/pfjLogo.jpg'); 
  }
  .navbar-brand {
     padding: 0px;
@@ -51,7 +51,7 @@
   }
  
 body {
-  background: rgba(34, 34, 45, 1.0)
+  background: rgba(34, 34, 45, 1.0);
 }
 
 .dvStickerHeader
@@ -270,3 +270,7 @@ body {
   height: 47px;
 }
 
+.active1
+{
+  color: aqua;
+}

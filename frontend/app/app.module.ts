@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './Components/header/header.component';
@@ -12,6 +12,8 @@ import { ExecutiveReportingComponent } from './Components/executive-reporting/ex
 import { CustomerPricingComponent } from './Components/customer-pricing/customer-pricing.component';
 
 import {AppRoutingModule} from './app-routing.module';
+import { ServiceConsumer } from './service-consumer.service';
+import { RepositoryService } from './repository.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,10 @@ import {AppRoutingModule} from './app-routing.module';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [ServiceConsumer,RepositoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
