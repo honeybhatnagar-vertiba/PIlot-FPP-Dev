@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "FCT_DM_COMPANY_LEVEL_ACTUAL_VS_TARGET")
+@Table(name = "FCT_DM_COMPANY_LEVEL_ACTUAL_VS_TARGET", schema = "fpp_dev")
 public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 
 	/**
