@@ -1,15 +1,18 @@
 package com.pilot.main.pilotservice.pojo;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 public class CustomerPricingDetail implements Serializable {
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = -5407225766790089571L;
 
 	private String temporalPeriod;
+
+	private LocalDate lastClosedPeriod;
 
 	private PFJTotal pFJTotal;
 
@@ -29,6 +32,14 @@ public class CustomerPricingDetail implements Serializable {
 
 	public void setTemporalPeriod(String temporalPeriod) {
 		this.temporalPeriod = temporalPeriod;
+	}
+
+	public LocalDate getLastClosedPeriod() {
+		return lastClosedPeriod;
+	}
+
+	public void setLastClosedPeriod(LocalDate lastClosedPeriod) {
+		this.lastClosedPeriod = lastClosedPeriod;
 	}
 
 	public PFJTotal getpFJTotal() {
@@ -81,8 +92,9 @@ public class CustomerPricingDetail implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CustomerPricingDetails [temporalPeriod=" + temporalPeriod + ", pFJTotal=" + pFJTotal + ", betterOf="
-				+ betterOf + ", totalRetail=" + totalRetail + ", retailMinus=" + retailMinus + ", funded=" + funded
-				+ ", ccc=" + ccc + "]";
+		return "CustomerPricingDetail [temporalPeriod=" + temporalPeriod + ", lastClosedPeriod=" + lastClosedPeriod
+				+ ", pFJTotal=" + pFJTotal + ", betterOf=" + betterOf + ", totalRetail=" + totalRetail
+				+ ", retailMinus=" + retailMinus + ", funded=" + funded + ", ccc=" + ccc + "]";
 	}
+
 }

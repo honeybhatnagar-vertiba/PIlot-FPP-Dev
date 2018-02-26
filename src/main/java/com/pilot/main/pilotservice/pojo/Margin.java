@@ -8,8 +8,8 @@ public class Margin implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 8164962658108108643L;
+
 	private BigDecimal vsTgLeft;
 	
 	private Boolean vsTgLeftPositive;

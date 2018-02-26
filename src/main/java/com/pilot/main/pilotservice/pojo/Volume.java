@@ -8,8 +8,8 @@ public class Volume implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 8752721638535299465L;
+
 	private BigDecimal vsTgLeft;
 	
 	private Boolean vsTgLeftPositive;

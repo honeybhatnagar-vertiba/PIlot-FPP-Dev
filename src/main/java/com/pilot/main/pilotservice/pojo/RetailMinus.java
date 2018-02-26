@@ -8,7 +8,7 @@ public class RetailMinus implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 917554479786203639L;
 
 	private GrossProfitDollars grossProfitDollars;
 	

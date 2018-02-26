@@ -3,12 +3,12 @@ package com.pilot.main.pilotservice.pojo;
 import java.io.Serializable;
 
 public class CCC implements Serializable {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 5326266657509989665L;
+
 	private GrossProfitDollars grossProfitDollars;
 	
 	private Volume volume;

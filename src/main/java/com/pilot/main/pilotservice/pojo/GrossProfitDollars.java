@@ -8,8 +8,8 @@ public class GrossProfitDollars implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -5871771939814681660L;
+
 	private BigDecimal vsTgLeft;
 	
 	private Boolean vsTgLeftPositive;

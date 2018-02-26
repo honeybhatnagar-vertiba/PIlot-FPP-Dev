@@ -8,7 +8,7 @@ public class BetterOf implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 5288938022538355542L;
 
 	private GrossProfitDollars grossProfitDollars;
 

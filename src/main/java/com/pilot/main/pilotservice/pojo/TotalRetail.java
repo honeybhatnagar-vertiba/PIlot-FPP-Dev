@@ -7,8 +7,8 @@ public class TotalRetail implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -6532331921967882936L;
+
 	private GrossProfitDollars grossProfitDollars;
 	
 	private Volume volume;

@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class PFJTotal implements Serializable {
-
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = -3422873344242250017L;
+
 	private GrossProfitDollars grossProfitDollars;
 	
 	private Volume volume;
