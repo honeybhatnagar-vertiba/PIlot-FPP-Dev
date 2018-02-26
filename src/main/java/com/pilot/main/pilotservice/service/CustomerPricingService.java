@@ -43,7 +43,7 @@ public class CustomerPricingService {
 		logger.info("Found MTD type rows ---> " + mtdEntities.size());
 		CustomerPricingDetail customerPricingDetailMTD = populateCustomerPricingDetail(mtdEntities);
 		customerPricingDetailMTD.setTemporalPeriod("MTD");
-		customerPricingDetailMTD.setLastClosedPeriod(mtdEntities.get(0).getLastClosedPeriod());
+		// customerPricingDetailMTD.setLastClosedPeriod(mtdEntities.get(0).getLastClosedPeriod());
 
 		/*
 		 * UI data generation for LCM filter
@@ -52,7 +52,7 @@ public class CustomerPricingService {
 		logger.info("Found LCM type rows ---> " + lcmEntities.size());
 		CustomerPricingDetail customerPricingDetailLCM = populateCustomerPricingDetail(lcmEntities);
 		customerPricingDetailLCM.setTemporalPeriod("LCM");
-		customerPricingDetailLCM.setLastClosedPeriod(lcmEntities.get(0).getLastClosedPeriod());
+		// customerPricingDetailLCM.setLastClosedPeriod(lcmEntities.get(0).getLastClosedPeriod());
 
 		/*
 		 * UI data generation for LCYTD filter
@@ -61,7 +61,7 @@ public class CustomerPricingService {
 		logger.info("Found LCYTD type rows ---> " + lcytdEntities.size());
 		CustomerPricingDetail customerPricingDetailLCYTD = populateCustomerPricingDetail(lcytdEntities);
 		customerPricingDetailLCYTD.setTemporalPeriod("LCYTD");
-		customerPricingDetailLCYTD.setLastClosedPeriod(lcytdEntities.get(0).getLastClosedPeriod());
+		// customerPricingDetailLCYTD.setLastClosedPeriod(lcytdEntities.get(0).getLastClosedPeriod());
 
 		List<CustomerPricingDetail> customerPricingDetails = new ArrayList<CustomerPricingDetail>();
 		customerPricingDetails.add(customerPricingDetailMTD);
