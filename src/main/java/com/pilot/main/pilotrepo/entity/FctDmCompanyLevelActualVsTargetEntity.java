@@ -3,7 +3,6 @@ package com.pilot.main.pilotrepo.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -67,8 +66,14 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 	@Column(name = "TARGET_NET_PL_MARGIN")
 	private BigDecimal targetNetPlMargin;
 	
+	@Column(name = "ACTUAL_EFFECTIVE_RETAIL_MINUS_RATE")
+	private BigDecimal actualEffectiveRetailMinusRate;
+	
+	@Column(name = "TARGET_EFFECTIVE_RETAIL_MINUS_RATE")
+	private BigDecimal targetEffectiveRetailMinusRate;
+	
 	@Column(name = "LAST_CLOSED_PERIOD")
-	private Date lastClosedPeriod;
+	private String lastClosedPeriod;
 
 	public FctDmCompanyLevelActualVsTargetId getFctDmCompanyLevelActualVsTargetId() {
 		return fctDmCompanyLevelActualVsTargetId;
@@ -198,11 +203,27 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 		this.targetNetPlMargin = targetNetPlMargin;
 	}
 
-	public Date getLastClosedPeriod() {
+	public BigDecimal getActualEffectiveRetailMinusRate() {
+		return actualEffectiveRetailMinusRate;
+	}
+
+	public void setActualEffectiveRetailMinusRate(BigDecimal actualEffectiveRetailMinusRate) {
+		this.actualEffectiveRetailMinusRate = actualEffectiveRetailMinusRate;
+	}
+
+	public BigDecimal getTargetEffectiveRetailMinusRate() {
+		return targetEffectiveRetailMinusRate;
+	}
+
+	public void setTargetEffectiveRetailMinusRate(BigDecimal targetEffectiveRetailMinusRate) {
+		this.targetEffectiveRetailMinusRate = targetEffectiveRetailMinusRate;
+	}
+
+	public String getLastClosedPeriod() {
 		return lastClosedPeriod;
 	}
 
-	public void setLastClosedPeriod(Date lastClosedPeriod) {
+	public void setLastClosedPeriod(String lastClosedPeriod) {
 		this.lastClosedPeriod = lastClosedPeriod;
 	}
 
@@ -216,7 +237,8 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 				+ actualBuyingPerformance + ", targetBuyingPerformance=" + targetBuyingPerformance
 				+ ", actualEffectivePumpFee=" + actualEffectivePumpFee + ", targetEffectivePumpFee="
 				+ targetEffectivePumpFee + ", actualNetPlMargin=" + actualNetPlMargin + ", actualNetPlMarginLy="
-				+ actualNetPlMarginLy + ", targetNetPlMargin=" + targetNetPlMargin + ", lastClosedPeriod="
-				+ lastClosedPeriod + "]";
+				+ actualNetPlMarginLy + ", targetNetPlMargin=" + targetNetPlMargin + ", actualEffectiveRetailMinusRate="
+				+ actualEffectiveRetailMinusRate + ", targetEffectiveRetailMinusRate=" + targetEffectiveRetailMinusRate
+				+ ", lastClosedPeriod=" + lastClosedPeriod + "]";
 	}
 }

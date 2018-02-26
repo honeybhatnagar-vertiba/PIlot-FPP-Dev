@@ -2,9 +2,7 @@ package com.pilot.main.pilotservice.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -45,9 +43,7 @@ public class CustomerPricingService {
 		logger.info("Found MTD type rows ---> " + mtdEntities.size());
 		CustomerPricingDetail customerPricingDetailMTD = populateCustomerPricingDetail(mtdEntities);
 		customerPricingDetailMTD.setTemporalPeriod("MTD");
-		// TODO move this to utility package
-		Date lastClosedDate = new Date(mtdEntities.get(0).getLastClosedPeriod().getTime());
-		customerPricingDetailMTD.setLastClosedPeriod(new SimpleDateFormat("MMMM yyyy").format(lastClosedDate));
+		customerPricingDetailMTD.setLastClosedPeriod(mtdEntities.get(0).getLastClosedPeriod());
 
 		/*
 		 * UI data generation for LCM filter
@@ -56,7 +52,7 @@ public class CustomerPricingService {
 		logger.info("Found LCM type rows ---> " + lcmEntities.size());
 		CustomerPricingDetail customerPricingDetailLCM = populateCustomerPricingDetail(lcmEntities);
 		customerPricingDetailLCM.setTemporalPeriod("LCM");
-		customerPricingDetailLCM.setLastClosedPeriod(new SimpleDateFormat("MMMM yyyy").format(lastClosedDate));
+		customerPricingDetailLCM.setLastClosedPeriod(lcmEntities.get(0).getLastClosedPeriod());
 
 		/*
 		 * UI data generation for LCYTD filter
@@ -65,7 +61,7 @@ public class CustomerPricingService {
 		logger.info("Found LCYTD type rows ---> " + lcytdEntities.size());
 		CustomerPricingDetail customerPricingDetailLCYTD = populateCustomerPricingDetail(lcytdEntities);
 		customerPricingDetailLCYTD.setTemporalPeriod("LCYTD");
-		customerPricingDetailLCYTD.setLastClosedPeriod(new SimpleDateFormat("MMMM yyyy").format(lastClosedDate));
+		customerPricingDetailLCYTD.setLastClosedPeriod(lcytdEntities.get(0).getLastClosedPeriod());
 
 		List<CustomerPricingDetail> customerPricingDetails = new ArrayList<CustomerPricingDetail>();
 		customerPricingDetails.add(customerPricingDetailMTD);
