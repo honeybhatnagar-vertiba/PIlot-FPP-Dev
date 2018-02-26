@@ -1,4 +1,4 @@
-import { GrossProfitDollar,Margin,Volume,MixPercentage } from '../Models/pfj-tiles-details';
+import { GrossProfitDollars,Margin,Volume,MixPercentage } from '../Models/pfj-tiles-details';
 import { PFJTotal,BetterOf,TotalRetail,RetailMinus,Funded,CCC } from '../Models/pfj-tiles';
 export interface ICustPriceDetailsVersusProp {
     vsTgLeft:string;
@@ -11,7 +11,7 @@ export interface ICustPriceDetailsVersusProp {
 
 export interface ICustPriceTilesDetails
 {
-    grossProfitDollar:GrossProfitDollar;
+    grossProfitDollars:GrossProfitDollars;
     volume:Volume;
     margin:Margin;
     mixPercentage:MixPercentage;

@@ -5,7 +5,9 @@ import { CustomerPriceDetails } from './Models/customer-price-details';
 
 @Injectable()
 export class RepositoryService {
-  customerPriceDetails:CustomerPriceDetails;
+  customerPricingDetails:CustomerPriceDetails[] = [];
+  selctedCustomerPricingDetails:CustomerPriceDetails = new CustomerPriceDetails();
+  selectedDataPeriod:string;
   constructor() { }
 
 }

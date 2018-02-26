@@ -1,5 +1,5 @@
 import { ICustPriceDetailsVersusProp,ICustPriceMixPercentage } from '../Interface/pfj-interfaces';
-export class GrossProfitDollar implements ICustPriceDetailsVersusProp {
+export class GrossProfitDollars implements ICustPriceDetailsVersusProp {
     vsTgLeft: string;
     vsTgLeftPositive: string;
     vsTgRight: string;
