@@ -2,7 +2,7 @@ package com.pilot.main.pilotrepo.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Time;
+import java.sql.Date;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -67,8 +67,8 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 	@Column(name = "TARGET_NET_PL_MARGIN")
 	private BigDecimal targetNetPlMargin;
 	
-	/*@Column(name = "LAST_CLOSED_PERIOD")
-	private LocalDate lastClosedPeriod;*/
+	@Column(name = "LAST_CLOSED_PERIOD")
+	private Date lastClosedPeriod;
 
 	public FctDmCompanyLevelActualVsTargetId getFctDmCompanyLevelActualVsTargetId() {
 		return fctDmCompanyLevelActualVsTargetId;
@@ -198,13 +198,13 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 		this.targetNetPlMargin = targetNetPlMargin;
 	}
 
-	/*public LocalDate getLastClosedPeriod() {
+	public Date getLastClosedPeriod() {
 		return lastClosedPeriod;
 	}
 
-	public void setLastClosedPeriod(LocalDate lastClosedPeriod) {
+	public void setLastClosedPeriod(Date lastClosedPeriod) {
 		this.lastClosedPeriod = lastClosedPeriod;
-	}*/
+	}
 
 	@Override
 	public String toString() {
@@ -216,7 +216,7 @@ public class FctDmCompanyLevelActualVsTargetEntity implements Serializable {
 				+ actualBuyingPerformance + ", targetBuyingPerformance=" + targetBuyingPerformance
 				+ ", actualEffectivePumpFee=" + actualEffectivePumpFee + ", targetEffectivePumpFee="
 				+ targetEffectivePumpFee + ", actualNetPlMargin=" + actualNetPlMargin + ", actualNetPlMarginLy="
-				+ actualNetPlMarginLy + ", targetNetPlMargin=" + targetNetPlMargin + /*", lastClosedPeriod="
-				+ lastClosedPeriod +*/ "]";
+				+ actualNetPlMarginLy + ", targetNetPlMargin=" + targetNetPlMargin + ", lastClosedPeriod="
+				+ lastClosedPeriod + "]";
 	}
 }
