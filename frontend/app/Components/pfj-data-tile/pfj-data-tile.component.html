@@ -1,0 +1,137 @@
+<div style="float:left;">
+  <div class="dvStickerHeaderCapSmall"></div>
+  <div class="dvStickerHeaderSmall">{{dataTileName}}</div>
+  <div class="dvStickerContainer">
+    <div class="dvStickerContainer">
+      <div style="min-height: 143px;">
+        <div class=dvSticker>
+          <div class="dvStickerHeaderLeft"> TOTAL GP$</div>
+          <div class="dvStickerHeaderRight"> 140.4</div>
+          <div class="dvStickerContentLeft">
+            <div style="padding-top: 10px;">
+              <span class="col-sm-5 spnStickerLeftVal">
+                <img *ngIf="dataTile.grossProfitDollars.vsTgLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!dataTile.grossProfitDollars.vsTgLeftPositive" src='assets/images/down_arrow.png'>
+              {{dataTile.grossProfitDollars.vsTgLeft}}</span>
+              <div>
+                <span class="col-sm-4 spnStickerCenterVal">VS.TG</span>
+                <span class="col-sm-3 spnStickerRightVal">{{dataTile.grossProfitDollars.vsTgRight}}</span>
+              </div>
+            </div>
+            <div style="padding-top: 10px;">
+              <span class="col-sm-5 spnStickerLeftVal">
+                <img *ngIf="dataTile.grossProfitDollars.vsLyLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!dataTile.grossProfitDollars.vsLyLeftPositive" src='assets/images/down_arrow.png'> 
+              {{dataTile.grossProfitDollars.vsLyLeft}}</span>
+              <div>
+                <span class="col-sm-4 spnStickerCenterVal">VS.LY</span>
+                <span class="col-sm-3 spnStickerRightVal">{{dataTile.grossProfitDollars.vsLyRight}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div style="min-height: 143px;">
+        <div class=dvSticker>
+          <div class="dvStickerHeaderLeft"> VOLUME</div>
+          <div class="dvStickerHeaderRight"> 140.4</div>
+          <div class="dvStickerContentLeft">
+            <div style="padding-top: 10px;">
+              <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="dataTile.volume.vsTgLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!dataTile.volume.vsTgLeftPositive" src='assets/images/down_arrow.png'>
+              {{dataTile.volume.vsTgLeft}}</span>
+              <div>
+                <span class="col-sm-4 spnStickerCenterVal">VS.TG</span>
+                <span class="col-sm-3 spnStickerRightVal">{{dataTile.volume.vsTgRight}}</span>
+              </div>
+            </div>
+            <div style="padding-top: 10px;">
+              <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="dataTile.volume.vsLyLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!dataTile.volume.vsLyLeftPositive" src='assets/images/down_arrow.png'>
+              {{dataTile.volume.vsLyLeft}}</span>
+              <div>
+                <span class="col-sm-4 spnStickerCenterVal">VS.LY</span>
+                <span class="col-sm-3 spnStickerRightVal">{{dataTile.volume.vsLyRight}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="dvStickerDevider"></div>
+      <div class="mixPercentage">
+        <span style="font-size: 10px;line-height: 50px;">Mix%</span>
+        <div>
+          <div class="mixPercentageColumns">
+            <span style="position: absolute;top:0px;">ACTUAL</span>
+            <span style="position: absolute;bottom:0px;">{{dataTile.mixPercentage.mixActual}}%</span>
+          </div>
+
+          <div class="mixPercentageColumns">
+            <div class="vl"></div>
+          </div>
+
+
+          <div class="mixPercentageColumns" style="margin-left: 110px;">
+            <span style="position: absolute;top:0px;">TARGET</span>
+            <span style="position: absolute;bottom:0px;">{{dataTile.mixPercentage.mixTarget}}%</span>
+          </div>
+          <div class="mixPercentageColumns" style="margin-left: 111px;">
+            <div class="vl"></div>
+
+          </div>
+
+          <div class="mixPercentageColumns" style="margin-left: 186px;">
+            <img *ngIf = "dataTile.mixPercentage.mixVsLyPositive"class="imgMixPercentage" src='assets/images/up_arrow.png'>
+            <img *ngIf = "!dataTile.mixPercentage.mixVsLyPositive"class="imgMixPercentage" src='assets/images/down_arrow.png'>
+            <span style="position: absolute;top:0px;">VS.LY</span>
+            <span style="position: absolute;bottom:0px;">{{dataTile.mixPercentage.mixVsLy}}%</span>
+          </div>
+
+        </div>
+      </div>
+      <div style="min-height: 143px;">
+        <div class=dvSticker>
+          <div class="dvStickerHeaderLeft"> MARGIN</div>
+          <div class="dvStickerHeaderRight"> 140.4</div>
+          <div class="dvStickerContentLeft">
+            <div style="padding-top: 10px;">
+              <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="dataTile.margin.vsTgLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!dataTile.margin.vsTgLeftPositive" src='assets/images/down_arrow.png'>
+              {{dataTile.margin.vsTgLeft}}</span>
+              <div>
+                <span class="col-sm-4 spnStickerCenterVal">VS.TG</span>
+                <span class="col-sm-3 spnStickerRightVal">{{dataTile.margin.vsTgRight}}</span>
+              </div>
+            </div>
+            <div style="padding-top: 10px;">
+              <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="dataTile.margin.vsLyLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!dataTile.margin.vsLyLeftPositive" src='assets/images/down_arrow.png'>
+              {{dataTile.margin.vsLyLeft}}</span>
+              <div>
+                <span class="col-sm-4 spnStickerCenterVal">VS.LY</span>
+                <span class="col-sm-3 spnStickerRightVal">{{dataTile.margin.vsLyRight}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <ng-container *ngIf='dataTileName == "BETTER OF"'>
+        <div class="dvStickerDevider"></div>
+        <app-pfj-data-sub-tile-better-of [betterOf] = dataTile></app-pfj-data-sub-tile-better-of>
+      </ng-container>
+
+      <ng-container *ngIf='dataTileName == "RETAIL MINUS"'>
+          <div class="dvStickerDevider"></div>
+          <app-pfj-data-sub-tile-retail-minus [retailMinus] = dataTile></app-pfj-data-sub-tile-retail-minus>
+        </ng-container>
+
+    </div>
+  </div>
+</div>

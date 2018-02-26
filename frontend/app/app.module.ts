@@ -14,6 +14,10 @@ import { CustomerPricingComponent } from './Components/customer-pricing/customer
 import {AppRoutingModule} from './app-routing.module';
 import { ServiceConsumer } from './service-consumer.service';
 import { RepositoryService } from './repository.service';
+import { PfjtotalComponent } from './Components/pfjtotal/pfjtotal.component';
+import { PfjDataTileComponent } from './Components/pfj-data-tile/pfj-data-tile.component';
+import { PfjDataSubTileBetterOfComponent } from './Components/pfj-data-sub-tile-better-of/pfj-data-sub-tile-better-of.component';
+import { PfjDataSubTileRetailMinusComponent } from './Components/pfj-data-sub-tile-retail-minus/pfj-data-sub-tile-retail-minus.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { RepositoryService } from './repository.service';
     PfjoverViewComponent,
     RetailPricingComponent,
     ExecutiveReportingComponent,
-    CustomerPricingComponent
+    CustomerPricingComponent,
+    PfjtotalComponent,
+    PfjDataTileComponent,
+    PfjDataSubTileBetterOfComponent,
+    PfjDataSubTileRetailMinusComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,107 @@
+<div style="float:left;margin-top: 20px;">
+  <div class="dvStickerHeaderCap"></div>
+  <div class="dvStickerHeader">PFJ TOTAL</div>
+  <div class="dvStickerContainer">
+    <div style="min-height: 143px;">
+      <div class=dvSticker>
+        <div class="dvStickerHeaderLeft"> TOTAL GP$</div>
+        <div class="dvStickerHeaderRight"> 140.4</div>
+        <div class="dvStickerContentLeft">
+          <div style="padding-top: 10px;">
+            <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="pfjTotal.grossProfitDollars.vsTgLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!pfjTotal.grossProfitDollars.vsTgLeftPositive" src='assets/images/down_arrow.png'> {{pfjTotal.grossProfitDollars.vsTgLeft}}
+            </span>
+            <div>
+              <span class="col-sm-4 spnStickerCenterVal">VS.TG</span>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.grossProfitDollars.vsTgRight}}</span>
+            </div>
+          </div>
+          <div style="padding-top: 10px;">
+            <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="pfjTotal.grossProfitDollars.vsLyLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!pfjTotal.grossProfitDollars.vsLyLeftPositive" src='assets/images/down_arrow.png'> {{pfjTotal.grossProfitDollars.vsLyLeft}}
+            </span>
+            <div>
+              <span class="col-sm-4 spnStickerCenterVal">VS.LY</span>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.grossProfitDollars.vsLyRight}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=dvSticker>
+        <div class="dvStickerHeaderLeft"> VOLUME</div>
+        <div class="dvStickerHeaderRight"> 140.4</div>
+        <div class="dvStickerContentLeft">
+          <div style="padding-top: 10px;">
+            <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="pfjTotal.volume.vsTgLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!pfjTotal.volume.vsTgLeftPositive" src='assets/images/down_arrow.png'> {{pfjTotal.volume.vsTgLeft}}
+            </span>
+            <div>
+              <span class="col-sm-4 spnStickerCenterVal">VS.TG</span>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.volume.vsTgRight}}</span>
+            </div>
+          </div>
+          <div style="padding-top: 10px;">
+            <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="pfjTotal.volume.vsLyLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!pfjTotal.volume.vsLyLeftPositive" src='assets/images/down_arrow.png'> {{pfjTotal.volume.vsLyLeft}}
+            </span>
+            <div>
+              <span class="col-sm-4 spnStickerCenterVal">VS.LY</span>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.volume.vsLyRight}}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div style="min-height: 143px;">
+      <div class=dvSticker>
+        <div class="dvStickerHeaderLeft"> MARGIN</div>
+        <div class="dvStickerHeaderRight"> 140.4</div>
+        <div class="dvStickerContentLeft">
+          <div style="padding-top: 10px;">
+            <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="pfjTotal.margin.vsTgLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!pfjTotal.margin.vsTgLeftPositive" src='assets/images/down_arrow.png'> {{pfjTotal.margin.vsTgLeft}}
+            </span>
+            <div>
+              <span class="col-sm-4 spnStickerCenterVal">VS.TG</span>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.margin.vsTgRight}}</span>
+            </div>
+          </div>
+          <div style="padding-top: 10px;">
+            <span class="col-sm-5 spnStickerLeftVal">
+              <img *ngIf="pfjTotal.margin.vsLyLeftPositive" src='assets/images/up_arrow.png'>
+              <img *ngIf="!pfjTotal.margin.vsLyLeftPositive" src='assets/images/down_arrow.png'> {{pfjTotal.margin.vsLyLeft}}
+            </span>
+            <div>
+              <span class="col-sm-4 spnStickerCenterVal">VS.LY</span>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.margin.vsLyRight}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class=dvSticker>
+        <div class="dvStickerContentLeft" style="margin-top:0px;height: 143px;">
+          <div class="dvStickerHeaderCapSmall"></div>
+          <div style="padding-top: 10px;">
+            <span class="col-sm-9 spnStickerLeftVal" style="font-size: 14px;">TOTAL GAL</span>
+            <div>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.totalGAL}}</span>
+            </div>
+          </div>
+          <div style="padding-top: 10px;">
+            <span class="col-sm-9 spnStickerLeftVal" style="font-size:14px;">TOTAL TARGET</span>
+            <div>
+              <span class="col-sm-3 spnStickerRightVal">{{pfjTotal.totalTarget}}</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
