@@ -163,8 +163,8 @@ public class CustomerPricingService {
 		pfjTotal.setGrossProfitDollars(grossProfitDollars);
 		pfjTotal.setVolume(volume);
 		pfjTotal.setMargin(margin);
-		pfjTotal.setTotalGAL(pfjTotalEntity.getActualVolumeLy());
-		pfjTotal.setTotalTarget(pfjTotalEntity.getTargetVolume());
+		pfjTotal.setTotalGAL(pfjTotalEntity.getActualVolumeLy().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
+		pfjTotal.setTotalTarget(pfjTotalEntity.getTargetVolume().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
 		
 		customerPricingDetail.setpFJTotal(pfjTotal);
 	}
@@ -208,10 +208,10 @@ public class CustomerPricingService {
 		betterOf.setVolume(volume);
 		betterOf.setMargin(margin);
 		betterOf.setMixPercentage(mixPercentage);
-		betterOf.setBuyingPerfActual(betterOfEntity.getActualBuyingPerformance());
-		betterOf.setBuyingPerfTarget(betterOfEntity.getTargetBuyingPerformance());
-		betterOf.setEffPumpFeeActual(betterOfEntity.getActualEffectivePumpFee());
-		betterOf.setEffPumpFeeTarget(betterOfEntity.getTargetEffectivePumpFee());
+		betterOf.setBuyingPerfActual(betterOfEntity.getActualBuyingPerformance().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
+		betterOf.setBuyingPerfTarget(betterOfEntity.getTargetBuyingPerformance().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
+		betterOf.setEffPumpFeeActual(betterOfEntity.getActualEffectivePumpFee().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
+		betterOf.setEffPumpFeeTarget(betterOfEntity.getTargetEffectivePumpFee().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
 		
 		customerPricingDetail.setBetterOf(betterOf);
 	}
@@ -298,8 +298,8 @@ public class CustomerPricingService {
 		retailMinus.setVolume(volume);
 		retailMinus.setMargin(margin);
 		retailMinus.setMixPercentage(mixPercentage);
-		retailMinus.setRmDiscountActual(retailMinusEntity.getActualEffectiveRetailMinusRate());
-		retailMinus.setRmDiscountTarget(retailMinusEntity.getTargetEffectiveRetailMinusRate());
+		retailMinus.setRmDiscountActual(retailMinusEntity.getActualEffectiveRetailMinusRate().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
+		retailMinus.setRmDiscountTarget(retailMinusEntity.getTargetEffectiveRetailMinusRate().divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP));
 		
 		customerPricingDetail.setRetailMinus(retailMinus);
 	}
