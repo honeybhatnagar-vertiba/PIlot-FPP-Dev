@@ -298,9 +298,8 @@ public class CustomerPricingService {
 		retailMinus.setVolume(volume);
 		retailMinus.setMargin(margin);
 		retailMinus.setMixPercentage(mixPercentage);
-		//TODO Populate data from table
-		retailMinus.setRmDiscountActual(BigDecimal.valueOf(0));
-		retailMinus.setRmDiscountTarget(BigDecimal.valueOf(0));
+		retailMinus.setRmDiscountActual(retailMinusEntity.getActualEffectiveRetailMinusRate());
+		retailMinus.setRmDiscountTarget(retailMinusEntity.getTargetEffectiveRetailMinusRate());
 		
 		customerPricingDetail.setRetailMinus(retailMinus);
 	}

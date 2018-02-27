@@ -2,7 +2,6 @@ package com.pilot.main.pilotrepo.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
