@@ -49,7 +49,6 @@ public class MixPercentage implements Serializable {
 
 	public void setMixVsLyPositive(Boolean mixVsLyPositive) {
 		this.mixVsLyPositive = mixVsLyPositive;
-		setMixVsLy(getMixVsLy().abs());
 	}
 
 	@Override
