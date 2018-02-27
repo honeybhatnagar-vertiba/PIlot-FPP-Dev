@@ -28,4 +28,5 @@ export class MixPercentage implements ICustPriceMixPercentage {
     mixTarget: string;
     mixVsLy: string;
     mixVsLyPositive: string;
+
 }

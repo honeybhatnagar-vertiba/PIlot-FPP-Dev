@@ -6,7 +6,8 @@ import { ExecutiveReportingComponent } from './Components/executive-reporting/ex
 import { CustomerPricingComponent } from './Components/customer-pricing/customer-pricing.component';
 
 const appRoutes: Routes = [
-    { path: '', component: PfjoverViewComponent },
+    //{ path: '', component: PfjoverViewComponent},
+    {path: '', redirectTo: '/pfjover-view',pathMatch: 'full'},
     { path: 'pfjover-view', component: PfjoverViewComponent },
     { path: 'retail-pricing', component: RetailPricingComponent },
     { path: 'executive-reporting', component: ExecutiveReportingComponent },

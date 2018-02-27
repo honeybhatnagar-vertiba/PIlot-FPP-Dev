@@ -10,6 +10,7 @@ import { CustomerPriceDetails } from '../../Models/customer-price-details';
 })
 export class PfjoverViewComponent implements OnInit {
   selectedCustPricingDetails : CustomerPriceDetails;
+  selectedViewTableau:string;
   constructor(private serviceConsumer: ServiceConsumer ,private repository : RepositoryService ) {
    }
 
@@ -47,6 +48,7 @@ var o = JSON.parse(s);
     this.repository.customerPricingDetails = new PfjOverviewOperations().PopulateCustomerPricingDetails(data);
     this.ProcessSelectedCustomerPricingDetails("LCYTD");
     this.repository.selectedDataPeriod = "LCYTD";
+    this.ToggleTableauHeaderTxt("GROSS PROFIT $");
   }
 
   ProcessSelectedCustomerPricingDetails(dataPeriod)
@@ -56,4 +58,8 @@ var o = JSON.parse(s);
     this.repository.selectedDataPeriod = dataPeriod;
   }
 
+  ToggleTableauHeaderTxt(data)
+  {
+    this.selectedViewTableau = data;
+  }
 }

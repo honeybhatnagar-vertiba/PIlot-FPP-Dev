@@ -1,5 +1,7 @@
 <nav class="navbar navbar-inverse" style="min-width: 1334px">
+    <div class="headerTopBoder"></div>
   <div class="container-fluid">
+      
     <div class="navbar-header">
       <a class="navbar-brand" href="#">
         <img src='assets/images/pfjLogo.jpg'>
@@ -7,22 +9,26 @@
     </div>
     <ul class="nav navbar-nav navbar-center">
       <li>
-        <a routerLink="/pfjover-view"  skipLocationChange>PFJ OVERVIEW</a>
+        <a routerLink="/pfjover-view" routerLinkActive="router-link-active">PFJ OVERVIEW</a>
+        <div class="headerMenuDivider"></div>
       </li>
       <li>
-        <a routerLink="/retail-pricing"  skipLocationChange>RETAIL PRICING</a>
+        <a ng-disabled="true" routerLink="/retail-pricing" routerLinkActive="router-link-active">RETAIL PRICING</a>
+        <div class="headerMenuDivider"></div>
       </li>
       <li>
-        <a routerLink="/executive-reporting"  skipLocationChange>EXECUTIVE REPORTING</a>
+        <a routerLink="/executive-reporting" routerLinkActive="router-link-active">EXECUTIVE REPORTING</a>
+        <div class="headerMenuDivider"></div>
       </li>
       <li>
-        <a routerLink="/customer-pricing"  skipLocationChange>CUSTOMER PRICING</a>
+        <a routerLink="/customer-pricing" routerLinkActive="router-link-active">CUSTOMER PRICING</a>
+        <div class="headerMenuDivider"></div>
       </li>
 
     </ul>
     <div class="searchBarMenu">
       <img src="./assets/images/searchicon.png">
-      <input type="text" placeholder="Search..">
+      <input disabled type="text" placeholder="Search..">
     </div>
     <div class="loginavatar">
       <img src="./assets/images/loginavatar.png">
