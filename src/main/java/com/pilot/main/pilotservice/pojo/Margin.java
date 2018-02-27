@@ -2,6 +2,7 @@ package com.pilot.main.pilotservice.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Margin implements Serializable {
 	
@@ -27,7 +28,7 @@ public class Margin implements Serializable {
 	}
 
 	public void setVsTgLeft(BigDecimal vsTgLeft) {
-		this.vsTgLeft = vsTgLeft;
+		this.vsTgLeft = vsTgLeft.divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP);
 	}
 
 	public Boolean getVsTgLeftPositive() {
@@ -43,7 +44,7 @@ public class Margin implements Serializable {
 	}
 
 	public void setVsTgRight(BigDecimal vsTgRight) {
-		this.vsTgRight = vsTgRight;
+		this.vsTgRight = vsTgRight.divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP);
 	}
 
 	public BigDecimal getVsLyLeft() {
@@ -51,7 +52,7 @@ public class Margin implements Serializable {
 	}
 
 	public void setVsLyLeft(BigDecimal vsLyLeft) {
-		this.vsLyLeft = vsLyLeft;
+		this.vsLyLeft = vsLyLeft.divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP);
 	}
 
 	public Boolean getVsLyLeftPositive() {
@@ -67,7 +68,7 @@ public class Margin implements Serializable {
 	}
 
 	public void setVsLyRight(BigDecimal vsLyRight) {
-		this.vsLyRight = vsLyRight;
+		this.vsLyRight = vsLyRight.divide(BigDecimal.valueOf(1000000), 2, RoundingMode.HALF_UP);
 	}
 
 	@Override
