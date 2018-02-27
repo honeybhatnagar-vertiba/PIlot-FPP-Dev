@@ -37,7 +37,7 @@ public class GrossProfitDollars implements Serializable {
 
 	public void setVsTgLeftPositive(Boolean vsTgLeftPositive) {
 		this.vsTgLeftPositive = vsTgLeftPositive;
-		setVsTgLeft(getVsTgLeft().negate());
+		setVsTgLeft(getVsTgLeft().abs());
 	}
 
 	public BigDecimal getVsTgRight() {

@@ -37,7 +37,7 @@ public class Volume implements Serializable {
 
 	public void setVsTgLeftPositive(Boolean vsTgLeftPositive) {
 		this.vsTgLeftPositive = vsTgLeftPositive;
-		setVsTgLeft(getVsTgLeft().negate());
+		setVsTgLeft(getVsTgLeft().abs());
 	}
 
 	public BigDecimal getVsTgRight() {
@@ -62,7 +62,7 @@ public class Volume implements Serializable {
 
 	public void setVsLyLeftPositive(Boolean vsLyLeftPositive) {
 		this.vsLyLeftPositive = vsLyLeftPositive;
-		setVsLyLeft(getVsLyLeft().negate());
+		setVsLyLeft(getVsLyLeft().abs());
 	}
 
 	public BigDecimal getVsLyRight() {
